@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Награды и достижения - Шени-агропродукт</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/theme.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="header-top-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>(01632) 72 3 57</span>
+            </div>
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>scheni-agro@mail.ru</span>
+            </div>
+          </div>
+          <div class="work-hours">Режим работы: Пн-Пт 8:00-17:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <div class="logo-icon">Ш</div>
+            <div class="logo-text">
+              <h1>Шени-агропродукт</h1>
+              <p>Сельскохозяйственная компания</p>
+            </div>
+          </div>
+
+          <nav class="nav desktop-nav">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="awards.html" class="nav-link active">Достижения</a>
+            <a href="vacancies.html" class="nav-link">Вакансии</a>
+            <a href="news.html" class="nav-link">Новости</a>
+            <a href="safety.html" class="nav-link">Безопасность</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+          </nav>
+
+          <div class="header-actions">
+            <button class="theme-toggle" aria-label="Сменить тему" title="Сменить тему">
+              <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+              <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <nav class="mobile-nav">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="awards.html" class="nav-link">Достижения</a>
+            <a href="vacancies.html" class="nav-link">Вакансии</a>
+            <a href="news.html" class="nav-link">Новости</a>
+            <a href="safety.html" class="nav-link">Безопасность</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="breadcrumbs">
+      <div class="container">
+        <nav class="breadcrumb-nav">
+          <a href="index.html" class="breadcrumb-link">Главная</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Награды и достижения</span>
+        </nav>
+      </div>
+    </div>
+
+    <section class="page-header">
+      <div class="container">
+        <div class="page-header-content">
+          <h1 class="page-title">Награды и достижения</h1>
+          <p class="page-subtitle">Наши успехи и признание в сельскохозяйственной отрасли</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="awards-section">
+      <div class="container">
+        <div class="awards-filters">
+          <div class="filter-group">
+            <label for="yearFilter">Год:</label>
+            <select id="yearFilter" class="filter-select">
+              <option value="">Все годы</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="awards-grid" id="awardsGrid">
+          <!-- Награды будут загружены динамически -->
+        </div>
+
+        <div class="no-awards" id="noAwards" style="display: none;">
+          <p>Награды не найдены</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Модальное окно для просмотра награды -->
+  <div class="modal" id="awardModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div class="modal-body">
+        <img id="modalImage" src="/placeholder.svg" alt="" class="modal-image">
+        <div class="modal-info">
+          <h3 id="modalTitle"></h3>
+          <div class="modal-details">
+            <p><strong>Год:</strong> <span id="modalYear"></span></p>
+            <p><strong>Место:</strong> <span id="modalPlace"></span></p>
+            <p><strong>Описание:</strong> <span id="modalDescription"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- П��лноэкранное модальное окно -->
+  <div class="fullscreen-modal" id="fullscreenModal">
+    <div class="fullscreen-content">
+      <span class="fullscreen-close" id="fullscreenClose">&times;</span>
+      <img id="fullscreenImage" src="/placeholder.svg" alt="" class="fullscreen-image">
+    </div>
+  </div>
+
+      <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">Ш</div>
+                        <div class="logo-text">
+                            <h3>Шени-агропродукт</h3>
+                            <p>ОАО</p>
+                        </div>
+                    </div>
+                    <p>Ведущая сельскохозяйственная компания Брестской области</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="awards.html">Достижения</a></li>
+                        <li><a href="vacancies.html">Вакансии</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="safety.html">Безопасность</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <div class="footer-contacts">
+                        <div class="footer-contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>225170, ул. Центральная д.52, аг. Шени Пружанский район</span>
+                        </div>
+                        <div class="footer-contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(01632) 72 3 57</span>
+                        </div>
+                        <div class="footer-contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>scheni-agro@mail.ru</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ОАО "Шени-агропродукт". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/awards.js"></script>
+</body>
+</html>

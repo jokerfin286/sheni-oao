@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Вакансии - Шени-агропродукт</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/theme.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="header-top-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>(01632) 72 3 57</span>
+            </div>
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>scheni-agro@mail.ru</span>
+            </div>
+          </div>
+          <div class="work-hours">Режим работы: Пн-Пт 8:00-17:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <div class="logo-icon">Ш</div>
+            <div class="logo-text">
+              <h1>Шени-агропродукт</h1>
+              <p>Сельскохозяйственная компания</p>
+            </div>
+          </div>
+
+          <nav class="nav desktop-nav">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="awards.html" class="nav-link">Достижения</a>
+            <a href="vacancies.html" class="nav-link active">Вакансии</a>
+            <a href="news.html" class="nav-link">Новости</a>
+            <a href="safety.html" class="nav-link">Безопасность</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+          </nav>
+
+          <div class="header-actions">
+            <button class="theme-toggle" aria-label="Сменить тему" title="Сменить тему">
+              <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+              <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <nav class="mobile-nav">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="awards.html" class="nav-link">Достижения</a>
+            <a href="vacancies.html" class="nav-link">Вакансии</a>
+            <a href="news.html" class="nav-link">Новости</a>
+            <a href="safety.html" class="nav-link">Безопасность</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+    <!-- Breadcrumbs -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html" class="breadcrumb-link">Главная</a>
+                <svg class="breadcrumb-separator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+                <span class="breadcrumb-current">Вакансии</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Вакансии</h1>
+            <p>Присоединяйтесь к нашей команде профессионалов в области сельского хозяйства</p>
+        </div>
+    </section>
+
+    <!-- Vacancies Content -->
+    <section class="vacancies-content">
+        <div class="container">
+            <!-- Urgent Notice -->
+            <!-- <div class="urgent-notice">
+                <h2>СРОЧНО! Требуется секретарь приемной руководителя</h2>
+                <p>Организация нуждается в квалифицированных работниках следующих профессий:</p>
+                <ul>
+                    <li>Начальник молочно-товарного комплекса</li>
+                    <li>Ветеринарные врачи</li>
+                    <li>Водители автомобиля</li>
+                    <li>Трактористы-машинисты сельскохозяйственного производства</li>
+                    <li>Животноводы</li>
+                    <li>Рабочие по комплексному обслуживанию и ремонту зданий и сооружений</li>
+                </ul>
+            </div> -->
+
+            <!-- Vacancies Grid -->
+            <div class="vacancies-grid">
+                <div class="vacancy-card">
+                    <div class="vacancy-header">
+                        <h3>Врач ветеринарной медицины</h3>
+                        <span class="vacancy-type">Полная занятость</span>
+                    </div>
+                    <div class="vacancy-meta">
+                        <span class="department">Ветеринарная служба</span>
+                        <span class="location">аг. Шени</span>
+                    </div>
+                    <div class="vacancy-section">
+                        <h4>Требования:</h4>
+                        <ul>
+                            <li>Высшее ветеринарное образование</li>
+                            <li>Опыт работы от 2 лет</li>
+                            <li>Знание современных методов лечения</li>
+                        </ul>
+                    </div>
+                    <div class="vacancy-section">
+                        <h4>Обязанности:</h4>
+                        <ul>
+                            <li>Лечение и профилактика заболеваний животных</li>
+                            <li>Проведение вакцинации</li>
+                            <li>Ведение ветеринарной документации</li>
+                        </ul>
+                    </div>
+                    <div class="vacancy-footer">
+                        <span class="contact-email">sheni-vet@mail.ru</span>
+                        <button class="btn btn-primary btn-sm">Откликнуться</button>
+                    </div>
+                </div>
+
+                <div class="vacancy-card">
+                    <div class="vacancy-header">
+                        <h3>Тракторист-машинист</h3>
+                        <span class="vacancy-type">Полная занятость</span>
+                    </div>
+                    <div class="vacancy-meta">
+                        <span class="department">Производство</span>
+                        <span class="location">аг. Шени</span>
+                    </div>
+                    <div class="vacancy-section">
+                        <h4>Требования:</h4>
+                        <ul>
+                            <li>Права категории C, D</li>
+                            <li>Опыт работы на сельхозтехнике</li>
+                            <li>Знание устройства тракторов</li>
+                        </ul>
+                    </div>
+                    <div class="vacancy-section">
+                        <h4>Обязанности:</h4>
+                        <ul>
+                            <li>Выполнение полевых работ</li>
+                            <li>Техническое обслуживание машин</li>
+                            <li>Соблюдение техники безопасности</li>
+                        </ul>
+                    </div>
+                    <div class="vacancy-footer">
+                        <span class="contact-email">scheni-agro@mail.ru</span>
+                        <button class="btn btn-primary btn-sm">Откликнуться</button>
+                    </div>
+                </div>
+
+                
+
+                <div class="vacancy-card">
+                    <div class="vacancy-header">
+                        <h3>Водитель автомобиля</h3>
+                        <span class="vacancy-type">Полная занятость</span>
+                    </div>
+                    <div class="vacancy-meta">
+                        <span class="department">Транспортный отдел</span>
+                        <span class="location">аг. Шени</span>
+                    </div>
+                    <div class="vacancy-section">
+                        <h4>Требования:</h4>
+                        <ul>
+                            <li>Права категории B, C</li>
+                            <li>Опыт работы от 3 лет</li>
+                            <li>Знание ПДД</li>
+                        </ul>
+                    </div>
+                    <div class="vacancy-section">
+                        <h4>Обязанности:</h4>
+                        <ul>
+                            <li>Перевозка грузов и пассажиров</li>
+                            <li>Техническое обслуживание автомобиля</li>
+                            <li>Ведение путевых листов</li>
+                        </ul>
+                    </div>
+                    <div class="vacancy-footer">
+                        <span class="contact-email">scheni-agro@mail.ru</span>
+                        <button class="btn btn-primary btn-sm">Откликнуться</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">Ш</div>
+                        <div class="logo-text">
+                            <h3>Шени-агропродукт</h3>
+                            <p>ОАО</p>
+                        </div>
+                    </div>
+                    <p>Ведущая сельскохозяйственная компания Брестской области</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="awards.html">Достижения</a></li>
+                        <li><a href="vacancies.html">Вакансии</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="safety.html">Безопасность</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <div class="footer-contacts">
+                        <div class="footer-contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>225170, ул. Центральная д.52, аг. Шени Пружанский район</span>
+                        </div>
+                        <div class="footer-contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(01632) 72 3 57</span>
+                        </div>
+                        <div class="footer-contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>scheni-agro@mail.ru</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ОАО "Шени-агропродукт". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
