@@ -1451,7 +1451,8 @@
 .hero {
   min-height: 60vh;
   /* обновляю фон для темной темы */
-  background: url("images/field.jpg") center / cover no-repeat;
+  background: url("/images/field.jpg") center / cover no-repeat, url("./images/field.jpg") center / cover no-repeat,
+    linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1540,7 +1541,8 @@
 /* Темная тема для hero */
 :root[data-theme="dark"] .hero {
   /* обновляю фон для темной темы */
-  background: url("images/field.jpg") center / cover no-repeat;
+    background: url("/images/field.jpg") center / cover no-repeat, url("./images/field.jpg") center / cover no-repeat,
+    linear-gradient(135deg, #1f2937 0%, #111827 100%);
 }
 
 :root[data-theme="dark"] .hero-subtitle {
