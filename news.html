@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Новости - Шени-агропродукт</title>
+    <meta name="description" content="Актуальные новости и объявления ОАО Шени-агропродукт. Последние события в компании, объявления о вакансиях и важная информация.">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="header-top-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>(01632) 72 3 57</span>
+            </div>
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>scheni-agro@mail.ru</span>
+            </div>
+          </div>
+          <div class="work-hours">Режим работы: Пн-Пт 8:00-17:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <div class="logo-icon">Ш</div>
+            <div class="logo-text">
+              <h1>Шени-агропродукт</h1>
+              <p>Сельскохозяйственная компания</p>
+            </div>
+          </div>
+
+          <nav class="nav desktop-nav">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="awards.html" class="nav-link">Достижения</a>
+            <a href="vacancies.html" class="nav-link">Вакансии</a>
+            <a href="news.html" class="nav-link active">Новости</a>
+            <a href="safety.html" class="nav-link">Безопасность</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+          </nav>
+
+          <div class="header-actions">
+            <button class="theme-toggle" aria-label="Сменить тему" title="Сменить тему">
+              <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+              <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <nav class="mobile-nav">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="awards.html" class="nav-link">Достижения</a>
+            <a href="vacancies.html" class="nav-link">Вакансии</a>
+            <a href="news.html" class="nav-link">Новости</a>
+            <a href="safety.html" class="nav-link">Безопасность</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+    <!-- Breadcrumbs -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html" class="breadcrumb-link">Главная</a>
+                <svg class="breadcrumb-separator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+                <span class="breadcrumb-current">Новости</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="page-header-text">
+                    <h1>Новости</h1>
+                    <p>Актуальные новости и объявления компании</p>
+                </div>
+                <div class="page-header-actions">
+                    <div class="search-box">
+                        <input type="text" id="newsSearch" placeholder="Поиск по новостям..." />
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
+                    <div class="filter-controls">
+                        <select id="categoryFilter">
+                            <option value="">Все категории</option>
+                            <option value="announcement">Объявления</option>
+                            <option value="news">Новости</option>
+                            <option value="events">События</option>
+                            <option value="reports">Отчеты</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Content -->
+    <section class="news-content">
+        <div class="container">
+            <div class="news-layout">
+                <!-- Main News Content -->
+                <div class="news-main">
+                    <div class="news-list" id="newsList">
+                        <!-- Featured News -->
+                        <article class="news-item featured" data-category="announcement" data-searchable>
+                            <div class="news-item-header">
+                                <div class="news-meta">
+                                    <span class="news-category announcement">Объявление</span>
+                                    <time class="news-date">06.02.2025</time>
+                                </div>
+                                <div class="news-actions">
+                                    <button class="news-share-btn" title="Поделиться">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="18" cy="5" r="3"></circle>
+                                            <circle cx="6" cy="12" r="3"></circle>
+                                            <circle cx="18" cy="19" r="3"></circle>
+                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="news-content-wrapper">
+                                <h2 class="news-title">Заключение целевых договоров с выпускниками образовательных школ</h2>
+                                <div class="news-excerpt">
+                                    <p>ОАО "Шени-агропродукт" заключает целевые договора с выпускниками образовательных школ по специальностям:</p>
+                                    <ul class="specialties-list">
+                                        <li><strong>врач ветеринарной медицины</strong></li>
+                                        <li><strong>ветеринарный фельдшер</strong></li>
+                                    </ul>
+                                    <p><strong>рабочим профессиям:</strong></p>
+                                    <ul class="specialties-list">
+                                        <li>тракторист-машинист</li>
+                                        <li>водитель автомобиля</li>
+                                    </ul>
+                                </div>
+                                <div class="news-footer">
+                                    <div class="news-tags">
+                                        <span class="tag">образование</span>
+                                        <span class="tag">трудоустройство</span>
+                                        <span class="tag">целевые договоры</span>
+                                    </div>
+                                    <a href="#" class="read-more-btn">
+                                        Подробнее
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12,5 19,12 12,19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Regular News Items -->
+                        <article class="news-item" data-category="news" data-searchable>
+                            <div class="news-item-header">
+                                <div class="news-meta">
+                                    <span class="news-category news">Новости</span>
+                                    <time class="news-date">02.02.2025</time>
+                                </div>
+                                <div class="news-actions">
+                                    <button class="news-share-btn" title="Поделиться">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="18" cy="5" r="3"></circle>
+                                            <circle cx="6" cy="12" r="3"></circle>
+                                            <circle cx="18" cy="19" r="3"></circle>
+                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="news-content-wrapper">
+                                <h2 class="news-title">Модернизация молочно-товарного комплекса завершена</h2>
+                                <div class="news-excerpt">
+                                    <p>Завершена полная модернизация молочно-товарного комплекса с установкой нового доильного оборудования и системы охлаждения молока. Новое оборудование позволит увеличить производительность на 30% и улучшить качество продукции.</p>
+                                </div>
+                                <div class="news-footer">
+                                    <div class="news-tags">
+                                        <span class="tag">модернизация</span>
+                                        <span class="tag">МТК</span>
+                                        <span class="tag">оборудование</span>
+                                    </div>
+                                    <a href="#" class="read-more-btn">
+                                        Подробнее
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12,5 19,12 12,19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-item" data-category="events" data-searchable>
+                            <div class="news-item-header">
+                                <div class="news-meta">
+                                    <span class="news-category events">События</span>
+                                    <time class="news-date">28.01.2025</time>
+                                </div>
+                                <div class="news-actions">
+                                    <button class="news-share-btn" title="Поделиться">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="18" cy="5" r="3"></circle>
+                                            <circle cx="6" cy="12" r="3"></circle>
+                                            <circle cx="18" cy="19" r="3"></circle>
+                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="news-content-wrapper">
+                                <h2 class="news-title">День открытых дверей для студентов аграрных специальностей</h2>
+                                <div class="news-excerpt">
+                                    <p>В рамках профориентационной работы компания проводит день открытых дверей для студентов аграрных специальностей. Участники смогут ознакомиться с современными технологиями производства и возможностями трудоустройства.</p>
+                                </div>
+                                <div class="news-footer">
+                                    <div class="news-tags">
+                                        <span class="tag">профориентация</span>
+                                        <span class="tag">студенты</span>
+                                        <span class="tag">экскурсии</span>
+                                    </div>
+                                    <a href="#" class="read-more-btn">
+                                        Подробнее
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12,5 19,12 12,19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-item" data-category="news" data-searchable>
+                            <div class="news-item-header">
+                                <div class="news-meta">
+                                    <span class="news-category news">Новости</span>
+                                    <time class="news-date">25.01.2025</time>
+                                </div>
+                                <div class="news-actions">
+                                    <button class="news-share-btn" title="Поделиться">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="18" cy="5" r="3"></circle>
+                                            <circle cx="6" cy="12" r="3"></circle>
+                                            <circle cx="18" cy="19" r="3"></circle>
+                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="news-content-wrapper">
+                                <h2 class="news-title">Получена новая партия сельскохозяйственной техники</h2>
+                                <div class="news-excerpt">
+                                    <p>Поступила новая партия современной сельскохозяйственной техники: 3 трактора МТЗ-1221, комбайн ПАЛЕССЕ КЗС-1218 и посевной комплекс. Техника будет использована для весенне-полевых работ 2025 года.</p>
+                                </div>
+                                <div class="news-footer">
+                                    <div class="news-tags">
+                                        <span class="tag">техника</span>
+                                        <span class="tag">МТЗ</span>
+                                        <span class="tag">полевые работы</span>
+                                    </div>
+                                    <a href="#" class="read-more-btn">
+                                        Подробнее
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12,5 19,12 12,19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-item" data-category="reports" data-searchable>
+                            <div class="news-item-header">
+                                <div class="news-meta">
+                                    <span class="news-category reports">Отчеты</span>
+                                    <time class="news-date">20.01.2025</time>
+                                </div>
+                                <div class="news-actions">
+                                    <button class="news-share-btn" title="Поделиться">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="18" cy="5" r="3"></circle>
+                                            <circle cx="6" cy="12" r="3"></circle>
+                                            <circle cx="18" cy="19" r="3"></circle>
+                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="news-content-wrapper">
+                                <h2 class="news-title">Итоги производственной деятельности за 2024 год</h2>
+                                <div class="news-excerpt">
+                                    <p>Подведены итоги производственной деятельности за 2024 год. Достигнуты плановые показатели по производству молока (7850 тонн) и мяса (980 тонн). Урожайность зерновых составила 65 ц/га, что на 8% выше прошлого года.</p>
+                                </div>
+                                <div class="news-footer">
+                                    <div class="news-tags">
+                                        <span class="tag">итоги года</span>
+                                        <span class="tag">производство</span>
+                                        <span class="tag">показатели</span>
+                                    </div>
+                                    <a href="#" class="read-more-btn">
+                                        Подробнее
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12,5 19,12 12,19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-item" data-category="announcement" data-searchable>
+                            <div class="news-item-header">
+                                <div class="news-meta">
+                                    <span class="news-category announcement">Объявление</span>
+                                    <time class="news-date">15.01.2025</time>
+                                </div>
+                                <div class="news-actions">
+                                    <button class="news-share-btn" title="Поделиться">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="18" cy="5" r="3"></circle>
+                                            <circle cx="6" cy="12" r="3"></circle>
+                                            <circle cx="18" cy="19" r="3"></circle>
+                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="news-content-wrapper">
+                                <h2 class="news-title">Изменения в графике работы на период праздников</h2>
+                                <div class="news-excerpt">
+                                    <p>В связи с предстоящими праздничными днями объявляется об изменениях в графике работы предприятия. Подробная информация о рабочих и выходных днях размещена на информационных стендах.</p>
+                                </div>
+                                <div class="news-footer">
+                                    <div class="news-tags">
+                                        <span class="tag">график работы</span>
+                                        <span class="tag">праздники</span>
+                                        <span class="tag">расписание</span>
+                                    </div>
+                                    <a href="#" class="read-more-btn">
+                                        Подробнее
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12,5 19,12 12,19"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="pagination-btn pagination-prev" disabled>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15,18 9,12 15,6"></polyline>
+                            </svg>
+                            Предыдущая
+                        </button>
+                        <div class="pagination-numbers">
+                            <button class="pagination-number active">1</button>
+                            <button class="pagination-number">2</button>
+                            <button class="pagination-number">3</button>
+                            <span class="pagination-dots">...</span>
+                            <button class="pagination-number">10</button>
+                        </div>
+                        <button class="pagination-btn pagination-next">
+                            Следующая
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9,18 15,12 9,6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="news-sidebar">
+                    <!-- Categories -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Категории</h3>
+                        <ul class="category-list">
+                            <li class="category-item">
+                                <a href="#" class="category-link active" data-category="">
+                                    <span>Все новости</span>
+                                    <span class="category-count">6</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link" data-category="announcement">
+                                    <span>Объявления</span>
+                                    <span class="category-count">2</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link" data-category="news">
+                                    <span>Новости</span>
+                                    <span class="category-count">2</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link" data-category="events">
+                                    <span>События</span>
+                                    <span class="category-count">1</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link" data-category="reports">
+                                    <span>Отчеты</span>
+                                    <span class="category-count">1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Archive -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Архив</h3>
+                        <ul class="archive-list">
+                            <li class="archive-item">
+                                <a href="#" class="archive-link">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    Февраль 2025
+                                </a>
+                            </li>
+                            <li class="archive-item">
+                                <a href="#" class="archive-link">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    Январь 2025
+                                </a>
+                            </li>
+                            <li class="archive-item">
+                                <a href="#" class="archive-link">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    Декабрь 2024
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Tags -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Популярные теги</h3>
+                        <div class="tags-cloud">
+                            <a href="#" class="cloud-tag">модернизация</a>
+                            <a href="#" class="cloud-tag">техника</a>
+                            <a href="#" class="cloud-tag">МТК</a>
+                            <a href="#" class="cloud-tag">трудоустройство</a>
+                            <a href="#" class="cloud-tag">образование</a>
+                            <a href="#" class="cloud-tag">производство</a>
+                            <a href="#" class="cloud-tag">показатели</a>
+                            <a href="#" class="cloud-tag">оборудование</a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="sidebar-widget contact-widget">
+                        <h3 class="widget-title">Связаться с нами</h3>
+                        <div class="contact-info-compact">
+                            <div class="contact-item-compact">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                                <span>(01632) 72 3 57</span>
+                            </div>
+                            <div class="contact-item-compact">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                <span>scheni-agro@mail.ru</span>
+                            </div>
+                        </div>
+                        <a href="contacts.html" class="btn btn-outline btn-sm">Все контакты</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">Ш</div>
+                        <div class="logo-text">
+                            <h3>Шени-агропродукт</h3>
+                            <p>ОАО</p>
+                        </div>
+                    </div>
+                    <p>Ведущая сельскохозяйственная компания Брестской области</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="awards.html">Достижения</a></li>
+                        <li><a href="vacancies.html">Вакансии</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="safety.html">Безопасность</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <div class="footer-contacts">
+                        <div class="footer-contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>225170, ул. Центральная д.52, аг. Шени Пружанский район</span>
+                        </div>
+                        <div class="footer-contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(01632) 72 3 57</span>
+                        </div>
+                        <div class="footer-contact">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>scheni-agro@mail.ru</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ОАО "Шени-агропродукт". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/news.js"></script>
+</body>
+</html>

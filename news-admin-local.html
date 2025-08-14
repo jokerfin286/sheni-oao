@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Админка новостей</title>
+  <meta name="robots" content="noindex,nofollow"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/theme.css"/>
+  <!-- Quill.js для WYSIWYG редактора -->
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  <style>
+    .admin-wrap { 
+      max-width: 1200px; 
+      margin: 20px auto; 
+      padding: 0; 
+      background: var(--bg-primary); 
+      border-radius: 16px; 
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1); 
+      overflow: hidden;
+    }
+    
+    .admin-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .admin-header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    
+    .admin-header .subtitle {
+      opacity: 0.9;
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+    
+    .admin-content {
+      padding: 32px;
+    }
+    
+    .grid { display: grid; gap: 24px; }
+    
+    .panel { 
+      border: 1px solid var(--border-color); 
+      border-radius: 12px; 
+      padding: 48px; 
+      background: var(--bg-secondary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .panel h2 {
+      margin: 0 0 20px 0;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .form-group { 
+      margin-bottom: 20px; 
+    }
+    
+    .form-group label { 
+      display: block;
+      font-weight: 600; 
+      color: var(--text-primary); 
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    
+    input[type="text"], input[type="date"], select, textarea {
+      width: 100%; 
+      padding: 12px 16px; 
+      border: 2px solid var(--border-color); 
+      border-radius: 8px; 
+      background: var(--bg-primary); 
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      transition: border-color 0.2s ease;
+    }
+    
+    #title {
+      font-size: 1.1rem;
+      padding: 16px 0px;
+      font-weight: 200;
+      min-height: 56px;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .editor-container {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--bg-primary);
+      min-height: 200px;
+    }
+    
+    .editor-container:focus-within {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .ql-toolbar {
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      background: var(--bg-secondary) !important;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .ql-container {
+      border: none !important;
+      font-size: 0.95rem;
+      border-radius: 0 0 8px 8px;
+    }
+    
+    .ql-editor {
+      min-height: 150px;
+      color: var(--text-primary) !important;
+    }
+    
+    .btns { 
+      display: flex; 
+      gap: 12px; 
+      flex-wrap: wrap; 
+      margin-top: 24px;
+    }
+    
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      border: 2px solid var(--border-color); 
+      background: var(--bg-primary); 
+      padding: 12px 20px; 
+      border-radius: 8px; 
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .btn-primary { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color: #fff; 
+      border: none; 
+    }
+    
+    .btn-success {
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: #fff;
+      border: none;
+    }
+    
+    .btn-danger { 
+      background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); 
+      color: #fff; 
+      border: none; 
+    }
+    
+    .status-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .status-online {
+      background: rgba(17, 153, 142, 0.1);
+      color: #11998e;
+    }
+    
+    .table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-top: 16px;
+    }
+    
+    .table th, .table td { 
+      padding: 12px 16px; 
+      border-bottom: 1px solid var(--border-color); 
+      vertical-align: top; 
+      text-align: left;
+    }
+    
+    .table th {
+      background: var(--bg-primary);
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .table tr:hover {
+      background: var(--bg-primary);
+    }
+    
+    .actions { 
+      display: flex; 
+      gap: 8px; 
+    }
+    
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.85rem;
+    }
+    
+    .media-list { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+      gap: 16px; 
+      margin-top: 16px; 
+    }
+    
+    .media-card { 
+      background: var(--bg-primary); 
+      border: 2px solid var(--border-color); 
+      border-radius: 12px; 
+      padding: 12px; 
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+    
+    .media-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    
+    .media-card .preview { 
+      aspect-ratio: 16/9; 
+      border-radius: 8px; 
+      overflow: hidden; 
+      background: #000; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+    }
+    
+    .media-card img, .media-card video { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      display: block; 
+    }
+    
+    .media-card .fields { 
+      margin-top: 12px; 
+      display: grid; 
+      gap: 8px; 
+    }
+    
+    /* Исправил стили кнопки удаления для лучшей кликабельности */
+    .media-card .remove { 
+      position: absolute; 
+      top: 8px; 
+      right: 8px; 
+      background: rgba(255, 65, 108, 0.9); 
+      color: white; 
+      border: none; 
+      border-radius: 50%; 
+      width: 32px; 
+      height: 32px; 
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .media-card .remove:hover {
+      background: rgba(255, 65, 108, 1);
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(255, 65, 108, 0.4);
+    }
+    
+    .media-card .remove:active {
+      transform: scale(0.95);
+    }
+    
+    .media-card .cover-badge { 
+      position: absolute; 
+      top: 8px; 
+      left: 8px; 
+      background: rgba(17, 153, 142, 0.9); 
+      color: white; 
+      padding: 4px 8px; 
+      border-radius: 6px; 
+      font-size: 11px;
+      font-weight: 600;
+      z-index: 5;
+      backdrop-filter: blur(4px);
+    }
+    
+    .result { 
+      margin-top: 16px; 
+      padding: 12px 16px; 
+      border-radius: 8px; 
+      font-weight: 500;
+    }
+    
+    .ok { 
+      background: rgba(17, 153, 142, 0.1);
+      color: #11998e; 
+      border: 1px solid rgba(17, 153, 142, 0.2);
+    } 
+    
+    .warn { 
+      background: rgba(255, 193, 7, 0.1);
+      color: #b45309; 
+      border: 1px solid rgba(255, 193, 7, 0.2);
+    } 
+    
+    .err { 
+      background: rgba(255, 65, 108, 0.1);
+      color: #dc2626; 
+      border: 1px solid rgba(255, 65, 108, 0.2);
+    }
+    
+    .two-cols { 
+      display: grid; 
+      gap: 24px; 
+      grid-template-columns: 1fr; 
+    }
+    
+    @media (min-width: 1024px) { 
+      .two-cols { 
+        grid-template-columns: 1.2fr 0.8fr; 
+      } 
+    }
+    
+    .category-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    
+    .category-news { background: rgba(102, 126, 234, 0.1); color: #667eea; }
+    .category-announcement { background: rgba(255, 193, 7, 0.1); color: #b45309; }
+    .category-events { background: rgba(17, 153, 142, 0.1); color: #11998e; }
+    .category-reports { background: rgba(255, 65, 108, 0.1); color: #dc2626; }
+    
+    .file-upload-area {
+      border: 2px dashed var(--border-color);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      background: var(--bg-primary);
+      transition: border-color 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .file-upload-area:hover {
+      border-color: #667eea;
+    }
+    
+    .file-upload-area.dragover {
+      border-color: #667eea;
+      background: rgba(102, 126, 234, 0.05);
+    }
+    
+    .upload-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <div>
+        <h1>🚀 Админка новостей</h1>
+        <div class="subtitle">Управление контентом с WYSIWYG редактором</div>
+      </div>
+      <div class="status-actions">
+        <div class="status-indicator status-online">
+          <span>●</span> Локальный сервер
+        </div>
+        <button class="btn btn-success" id="saveNews">💾 Сохранить все</button>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <div id="status" class="result" style="display:none;"></div>
+
+      <div class="two-cols">
+        <div class="panel">
+          <h2>📰 Список новостей</h2>
+          <div class="btns">
+            <button class="btn" id="loadNews">🔄 Обновить</button>
+          </div>
+          <table class="table" id="postsTable">
+            <thead>
+              <tr><th>Дата</th><th>Категория</th><th>Заголовок</th><th>Теги</th><th>Действия</th></tr>
+            </thead>
+            <tbody id="postsTbody"></tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h2 id="formTitle">✏️ Добавить новость</h2>
+          
+          <div class="form-group">
+            <label for="title">Заголовок *</label>
+            <textarea type="text" id="title" placeholder="Введите заголовок новости" ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="date">Дата *</label>
+            <input type="date" id="date" />
+          </div>
+
+          <div class="form-group">
+            <label for="category">Категория</label>
+            <select id="category">
+              <option value="news">📰 Новости</option>
+              <option value="announcement">📢 Объявления</option>
+              <option value="events">🎉 События</option>
+              <option value="reports">📊 Отчеты</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="excerpt">Краткое описание *</label>
+            <textarea id="excerpt" rows="3" placeholder="Краткое описание для превью..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="tags">Теги</label>
+            <input type="text" id="tags" placeholder="техника, модернизация, новости"/>
+          </div>
+
+          <div class="form-group">
+            <label>Основной контент *</label>
+            <div id="editor" class="editor-container"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Медиафайлы</label>
+            <div class="file-upload-area" id="uploadArea">
+              <div class="upload-icon">📁</div>
+              <div>Перетащите файлы сюда или нажмите для выбора</div>
+              <div style="font-size: 0.9rem; opacity: 0.7; margin-top: 4px;">Поддерживаются изображения и видео</div>
+            </div>
+            <input type="file" id="media" accept="image/*,video/*" multiple style="display: none;" />
+            <div id="mediaList" class="media-list"></div>
+          </div>
+
+          <div class="btns">
+            <button class="btn btn-primary" id="savePost">💾 Сохранить</button>
+            <button class="btn" id="resetForm">🗑️ Очистить</button>
+          </div>
+          <div id="formResult" class="result" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/news-admin-local.js"></script>
+</body>
+</html>
