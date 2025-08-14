@@ -452,6 +452,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.3s ease;
 }
 
@@ -586,6 +587,11 @@
   border-radius: 0.5rem;
   cursor: pointer;
   transition: transform 0.2s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-image:hover {
+  transform: scale(1.02);
 }
 
 .modal-details p {
@@ -1122,4 +1128,424 @@
     max-width: 98vw;
     max-height: 98vh;
   }
+}
+
+/* ==== СТИЛИ ДЛЯ КАРТЫ ==== */
+.company-map {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+}
+
+.map-container {
+  flex: 1;
+  min-height: 300px;
+  position: relative;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: 12px 12px 0 0;
+}
+
+.map-info {
+  padding: 20px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+.map-info h3 {
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.map-info p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Адаптивность для карты */
+@media (max-width: 768px) {
+  .company-map {
+    margin-top: 2rem;
+  }
+
+  .map-container {
+    min-height: 250px;
+  }
+
+  #map {
+    min-height: 250px;
+  }
+
+  .map-info {
+    padding: 16px;
+  }
+
+  .map-info h3 {
+    font-size: 16px;
+  }
+}
+
+/* Темная тема для карты */
+:root[data-theme="dark"] .company-map {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .map-info {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .map-info h3 {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .map-info p {
+  color: var(--text-secondary);
+}
+
+/* Стили для Leaflet карты в темной теме */
+:root[data-theme="dark"] .leaflet-container {
+  background: #1a202c;
+}
+
+:root[data-theme="dark"] .leaflet-control-container .leaflet-control {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .leaflet-control-container .leaflet-control a {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .leaflet-control-container .leaflet-control a:hover {
+  background: var(--bg-accent);
+}
+
+:root[data-theme="dark"] .leaflet-popup-content-wrapper {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+:root[data-theme="dark"] .leaflet-popup-tip {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+/* ==== СТИЛИ ДЛЯ ВСТРОЕННОЙ КАРТЫ ==== */
+.company-location {
+  width: 100%;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.company-location:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.company-location iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  display: block;
+}
+
+.location-info {
+  padding: 20px;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.location-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.location-icon svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.location-text h3 {
+  margin: 0 0 4px 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.location-text p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .company-location {
+    height: 320px;
+    margin-top: 2rem;
+  }
+
+  .company-location iframe {
+    height: 240px;
+  }
+
+  .location-info {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .location-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .location-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .location-text h3 {
+    font-size: 16px;
+  }
+
+  .location-text p {
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+:root[data-theme="dark"] .company-location {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="dark"] .company-location:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme="dark"] .location-info {
+  background: var(--bg-secondary);
+}
+
+/* ==== СТИЛИ ДЛЯ КАСТОМНОГО МАРКЕРА LEAFLET ==== */
+.custom-marker {
+  background: none !important;
+  border: none !important;
+}
+
+.marker-pin {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: bounce 2s infinite;
+}
+
+.marker-pin svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+  transform: rotate(45deg);
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: rotate(-45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(-45deg) translateY(-10px);
+  }
+  60% {
+    transform: rotate(-45deg) translateY(-5px);
+  }
+}
+
+/* ==== СТИЛИ ДЛЯ ВСПЛЫВАЮЩЕГО ОКНА КАРТЫ ==== */
+.map-popup {
+  font-family: "Inter", sans-serif;
+  min-width: 250px;
+}
+
+.map-popup h3 {
+  margin: 0 0 12px 0;
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.map-popup p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.map-popup strong {
+  color: var(--primary-color);
+}
+
+/* ==== СТИЛИ ДЛЯ ССЫЛКИ НА КАРТУ ==== */
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 8px;
+  transition: color 0.2s ease;
+}
+
+.map-link:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+/* ==== СТИЛИ ДЛЯ HERO С ФОНОВЫМ ИЗОБРАЖЕНИЕМ ==== */
+.hero {
+  min-height: 60vh;
+  /* обновляю фон для темной темы */
+  background: url("/images/field.jpg") center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  /* добавляю дополнительное центрирование */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text-center {
+  text-align: center;
+  animation: fadeInUp 1s ease-out;
+  /* улучшаю центрирование текста */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-text-center h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  /* усиливаю тень для лучшей читаемости на поле */
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+    /* добавляю сильную тень и обводку для лучшей видимости на светлых участках */
+  -webkit-text-fill-color: black;
+  text-shadow: 2px 2px 4px rgba(55, 55, 55, 0.8), 0 0 8px rgba(55, 55, 55, 0.6);
+  -webkit-text-stroke: 1px rgba(55, 55, 55, 0.3);
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность для hero */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 50vh;
+  }
+
+  .hero-text-center h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+}
+
+/* Темная тема для hero */
+:root[data-theme="dark"] .hero {
+  /* обновляю фон для темной темы */
+  background: url("/images/field.jpg") center / cover no-repeat;
+}
+
+:root[data-theme="dark"] .hero-subtitle {
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5), 0 0 8px rgba(255, 255, 255, 0.5);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  -webkit-text-fill-color: white;
+  color: #f8fafc;
 }
