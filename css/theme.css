@@ -1447,24 +1447,34 @@
   text-decoration: underline;
 }
 
-/* ==== СТИЛИ ДЛЯ HERO С ФОНОВЫМ ИЗОБРАЖЕНИЕМ ==== */
+/* ==== СТИЛИ ДЛЯ HERO С HTML ИЗОБРАЖЕНИЕМ ==== */
 .hero {
   min-height: 60vh;
-  /* обновляю фон для темной темы */
-  background: url("/images/field.jpg") center / cover no-repeat, url("./images/field.jpg") center / cover no-repeat,
-    linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
   position: relative;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
 }
 
 .hero-content {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
   /* добавляю дополнительное центрирование */
   display: flex;
   flex-direction: column;
@@ -1487,6 +1497,7 @@
   font-weight: 700;
   margin-bottom: 1rem;
   /* усиливаю тень для лучшей читаемости на поле */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
 .hero-subtitle {
@@ -1494,8 +1505,8 @@
   font-weight: 400;
   margin-bottom: 1rem;
   opacity: 0.9;
-    /* добавляю сильную тень и обводку для лучшей видимости на светлых участках */
-  -webkit-text-fill-color: black;
+  /* добавляю сильную тень и обводку для лучшей видимости на светлых участках */
+  color: black;
   text-shadow: 2px 2px 4px rgba(55, 55, 55, 0.8), 0 0 8px rgba(55, 55, 55, 0.6);
   -webkit-text-stroke: 1px rgba(55, 55, 55, 0.3);
 }
@@ -1506,6 +1517,7 @@
   opacity: 0.8;
   max-width: 600px;
   margin: 0 auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 @keyframes fadeInUp {
@@ -1539,15 +1551,16 @@
 }
 
 /* Темная тема для hero */
-:root[data-theme="dark"] .hero {
-  /* обновляю фон для темной темы */
-    background: url("/images/field.jpg") center / cover no-repeat, url("./images/field.jpg") center / cover no-repeat,
-    linear-gradient(135deg, #1f2937 0%, #111827 100%);
+:root[data-theme="dark"] .hero-subtitle {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(255, 255, 255, 0.6);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
 }
 
-:root[data-theme="dark"] .hero-subtitle {
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5), 0 0 8px rgba(255, 255, 255, 0.5);
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-  -webkit-text-fill-color: white;
-  color: #f8fafc;
+:root[data-theme="dark"] .hero-text-center h1 {
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+:root[data-theme="dark"] .hero-description {
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
 }
