@@ -1,0 +1,44 @@
+/* добавляем стили для анимации загрузки */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Улучшенные стили для формы */
+.contact-form input:invalid,
+.contact-form textarea:invalid,
+.contact-form select:invalid {
+  border-color: #ef4444;
+}
+
+.contact-form input:valid,
+.contact-form textarea:valid,
+.contact-form select:valid {
+  border-color: #10b981;
+}
+
+/* Стили для уведомлений */
+.notification {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+
+.notification-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.notification-error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.notification-info {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
