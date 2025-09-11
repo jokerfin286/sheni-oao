@@ -444,7 +444,6 @@
 
 .award-image {
   position: relative;
-  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
@@ -452,6 +451,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.3s ease;
 }
 
@@ -586,6 +586,11 @@
   border-radius: 0.5rem;
   cursor: pointer;
   transition: transform 0.2s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-image:hover {
+  transform: scale(1.02);
 }
 
 .modal-details p {
@@ -1123,3 +1128,877 @@
     max-height: 98vh;
   }
 }
+
+/* ==== СТИЛИ ДЛЯ КАРТЫ ==== */
+.company-map {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+}
+
+.map-container {
+  flex: 1;
+  min-height: 300px;
+  position: relative;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: 12px 12px 0 0;
+}
+
+.map-info {
+  padding: 20px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+.map-info h3 {
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.map-info p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Адаптивность для карты */
+@media (max-width: 768px) {
+  .company-map {
+    margin-top: 2rem;
+  }
+
+  .map-container {
+    min-height: 250px;
+  }
+
+  #map {
+    min-height: 250px;
+  }
+
+  .map-info {
+    padding: 16px;
+  }
+
+  .map-info h3 {
+    font-size: 16px;
+  }
+}
+
+/* Темная тема для карты */
+:root[data-theme="dark"] .company-map {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .map-info {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .map-info h3 {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .map-info p {
+  color: var(--text-secondary);
+}
+
+/* Стили для Leaflet карты в темной теме */
+:root[data-theme="dark"] .leaflet-container {
+  background: #1a202c;
+}
+
+:root[data-theme="dark"] .leaflet-control-container .leaflet-control {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .leaflet-control-container .leaflet-control a {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .leaflet-control-container .leaflet-control a:hover {
+  background: var(--bg-accent);
+}
+
+:root[data-theme="dark"] .leaflet-popup-content-wrapper {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+:root[data-theme="dark"] .leaflet-popup-tip {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+/* ==== СТИЛИ ДЛЯ ВСТРОЕННОЙ КАРТЫ ==== */
+.company-location {
+  width: 100%;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.company-location:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.company-location iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  display: block;
+}
+
+.location-info {
+  padding: 20px;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.location-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.location-icon svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.location-text h3 {
+  margin: 0 0 4px 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.location-text p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .company-location {
+    height: 320px;
+    margin-top: 2rem;
+  }
+
+  .company-location iframe {
+    height: 240px;
+  }
+
+  .location-info {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .location-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .location-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .location-text h3 {
+    font-size: 16px;
+  }
+
+  .location-text p {
+    font-size: 13px;
+  }
+}
+
+/* Темная тема */
+:root[data-theme="dark"] .company-location {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="dark"] .company-location:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme="dark"] .location-info {
+  background: var(--bg-secondary);
+}
+
+/* ==== СТИЛИ ДЛЯ КАСТОМНОГО МАРКЕРА LEAFLET ==== */
+.custom-marker {
+  background: none !important;
+  border: none !important;
+}
+
+.marker-pin {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: bounce 2s infinite;
+}
+
+.marker-pin svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+  transform: rotate(45deg);
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: rotate(-45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(-45deg) translateY(-10px);
+  }
+  60% {
+    transform: rotate(-45deg) translateY(-5px);
+  }
+}
+
+/* ==== СТИЛИ ДЛЯ ВСПЛЫВАЮЩЕГО ОКНА КАРТЫ ==== */
+.map-popup {
+  font-family: "Inter", sans-serif;
+  min-width: 250px;
+}
+
+.map-popup h3 {
+  margin: 0 0 12px 0;
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.map-popup p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.map-popup strong {
+  color: var(--primary-color);
+}
+
+/* ==== СТИЛИ ДЛЯ ССЫЛКИ НА КАРТУ ==== */
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 8px;
+  transition: color 0.2s ease;
+}
+
+.map-link:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+/* Стили для логотипа */
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Адаптивные размеры логотипа */
+.header .logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer .logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Для темной темы */
+[data-theme="dark"] .logo-image {
+  filter: brightness(1.1);
+}
+
+/* Hover эффект */
+.logo:hover .logo-image {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+
+/* ==== СТИЛИ ДЛЯ HERO С HTML ИЗОБРАЖЕНИЕМ ==== */
+.hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  /* добавляю дополнительное центрирование */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text-center {
+  text-align: center;
+  animation: fadeInUp 1s ease-out;
+  /* улучшаю центрирование текста */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-text-center h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  /* усиливаю тень для лучшей читаемости на поле */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+  /* добавляю сильную тень и обводку для лучшей видимости на светлых участках */
+  color: black;
+  text-shadow: 2px 2px 4px rgba(55, 55, 55, 0.8), 0 0 8px rgba(55, 55, 55, 0.6);
+  -webkit-text-stroke: 1px rgba(55, 55, 55, 0.3);
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность для hero */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 50vh;
+  }
+
+  .hero-text-center h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+}
+
+/* Темная тема для hero */
+:root[data-theme="dark"] .hero-subtitle {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(255, 255, 255, 0.6);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+}
+
+:root[data-theme="dark"] .hero-text-center h1 {
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+:root[data-theme="dark"] .hero-description {
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+
+/* ==== СТИЛИ ДЛЯ СТРАНИЦЫ АКЦИОНЕРОВ ==== */
+.shareholders-section {
+  padding: 2rem 0;
+}
+
+.year-selector {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.year-selector h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.year-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.year-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.year-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.year-btn.active {
+  background: var(--gradient-brand);
+  border-color: transparent;
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.key-metrics {
+  margin-bottom: 3rem;
+}
+
+.key-metrics h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.metric-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.metric-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  background: var(--gradient-brand);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.financial-reports h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.report-accordions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordion-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.accordion-header {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+  transition: all 0.2s ease;
+}
+
+.accordion-header:hover {
+  background: var(--bg-accent);
+}
+
+.accordion-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.125rem;
+}
+
+.accordion-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-content.active {
+  max-height: 2000px;
+}
+
+.accordion-content > div {
+  padding: 1.5rem;
+}
+
+.balance-sheet {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.balance-section h4 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.balance-group {
+  margin-bottom: 1.5rem;
+}
+
+.balance-group h5 {
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.balance-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.balance-item span:first-child {
+  color: var(--text-secondary);
+}
+
+.balance-item span:last-child {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.balance-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  margin-top: 0.5rem;
+  border-top: 2px solid var(--border-color);
+  font-weight: 600;
+}
+
+.balance-total span:first-child {
+  color: var(--text-primary);
+}
+
+.balance-total span:last-child {
+  color: var(--primary-color);
+}
+
+.balance-grand-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  margin-top: 1rem;
+  border-top: 3px solid var(--primary-color);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.balance-grand-total span {
+  color: var(--text-primary);
+}
+
+.income-statement {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.income-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.income-item span:first-child {
+  color: var(--text-secondary);
+}
+
+.income-item span:last-child {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.income-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  margin: 0.5rem 0;
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  font-weight: 600;
+}
+
+.income-total span:first-child {
+  color: var(--text-primary);
+}
+
+.income-total span:last-child {
+  color: var(--primary-color);
+}
+
+.income-grand-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  margin-top: 1rem;
+  border-top: 3px solid var(--primary-color);
+  font-weight: 700;
+  font-size: 1.125rem;
+  background: var(--bg-accent);
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.income-grand-total span {
+  color: var(--text-primary);
+}
+
+.company-info {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-item {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.info-item h5 {
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.info-item p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.info-item ul {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--text-secondary);
+}
+
+.info-item li {
+  margin-bottom: 0.25rem;
+}
+
+.no-data {
+  text-align: center;
+  padding: 3rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  margin-top: 2rem;
+}
+
+.no-data p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Темная тема для страницы акционеров */
+:root[data-theme="dark"] .metric-card,
+:root[data-theme="dark"] .accordion-item,
+:root[data-theme="dark"] .info-item,
+:root[data-theme="dark"] .no-data {
+  background-color: #0e1627;
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .accordion-header {
+  background-color: #0b1220;
+}
+
+:root[data-theme="dark"] .accordion-header:hover {
+  background-color: #0e1627;
+}
+
+:root[data-theme="dark"] .year-btn {
+  background-color: #0e1627;
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .income-grand-total {
+  background-color: rgba(34, 197, 94, 0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .balance-sheet {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .year-buttons {
+    gap: 0.25rem;
+  }
+
+  .year-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+

@@ -316,5 +316,89 @@ function initBackToTop() {
   })
 }
 
+
 // Initialize back to top button
 document.addEventListener("DOMContentLoaded", initBackToTop)
+
+document.addEventListener("DOMContentLoaded", function () {
+  const panel = document.getElementById("accessibilityPanel");
+  const toggleBtn = document.getElementById("panelToggle");
+  const content = panel.querySelector(".panel-content");
+
+  // Открытие/закрытие панели
+  toggleBtn.addEventListener("click", () => {
+    content.style.display = content.style.display === "block" ? "none" : "block";
+  });
+
+  // Подстраиваем цвета панели под тему сайта
+  function updatePanelColors() {
+    const theme = document.documentElement.getAttribute("data-theme") || "light";
+    let bg = "#fff", color = "#000";
+    if (theme === "dark") { bg = "#333"; color = "#eee"; }
+
+    panel.style.setProperty("--panel-bg", bg);
+    panel.style.setProperty("--panel-color", color);
+
+    panel.querySelectorAll(".control-btn").forEach(btn => {
+      btn.style.color = color;
+      btn.style.borderColor = color;
+    });
+  }
+
+  updatePanelColors();
+  const observer = new MutationObserver(updatePanelColors);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  // Цвет сайта
+  const colorButtons = panel.querySelectorAll("[data-color]");
+  colorButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const color = btn.getAttribute("data-color");
+      let bg, text;
+      switch(color) {
+        case "blue": bg = "#e0f2ff"; text = "#1e3a8a"; break;
+        case "yellow": bg = "#fef9c3"; text = "#92400e"; break;
+        case "green": bg = "#dcfce7"; text = "#166534"; break;
+        default: bg = ""; text = ""; break;
+      }
+      document.querySelectorAll("body, header, footer, section, div, nav, p, h1,h2,h3,h4,h5,h6,a,span").forEach(el => {
+        el.style.backgroundColor = bg;
+        el.style.color = text;
+      });
+    });
+  });
+
+  // Размер шрифта на весь сайт
+  const fontButtons = panel.querySelectorAll("[data-font]");
+  fontButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const scale = btn.getAttribute("data-font");
+      document.documentElement.style.fontSize = scale + "em";
+      document.body.style.fontSize = scale + "em";
+    });
+  });
+
+  // Подсветка ссылок
+  const highlightLinksBtn = document.getElementById("highlightLinks");
+  highlightLinksBtn?.addEventListener("click", () => {
+    document.querySelectorAll("a").forEach(a => {
+      if(!a.style.outline) {
+        a.style.outline = "2px solid #ff0";
+        a.style.backgroundColor = "#333";
+        a.style.color = "#ff0";
+      } else {
+        a.style.outline = "";
+        a.style.backgroundColor = "";
+        a.style.color = "";
+      }
+    });
+  });
+
+  // Скрыть/показ изображений
+  const toggleImagesBtn = document.getElementById("toggleImages");
+  toggleImagesBtn?.addEventListener("click", () => {
+    document.querySelectorAll("img").forEach(img => {
+      img.style.display = img.style.display === "none" ? "" : "none";
+    });
+  });
+});

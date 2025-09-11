@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройка EmailJS - Инструкция</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .step { margin: 20px 0; padding: 15px; border-left: 4px solid #3b82f6; background: #f8fafc; }
+        code { background: #e5e7eb; padding: 2px 6px; border-radius: 4px; }
+        .warning { background: #fef3c7; border-left-color: #f59e0b; }
+    </style>
+</head>
+<body>
+    <h1>Настройка реальной отправки писем через EmailJS</h1>
+    
+    <div class="step">
+        <h3>Шаг 1: Регистрация в EmailJS</h3>
+        <p>1. Перейдите на <a href="https://www.emailjs.com/" target="_blank">emailjs.com</a></p>
+        <p>2. Создайте бесплатный аккаунт</p>
+        <p>3. Подтвердите email</p>
+    </div>
+
+    <div class="step">
+        <h3>Шаг 2: Настройка Email Service</h3>
+        <p>1. В панели EmailJS выберите "Email Services"</p>
+        <p>2. Добавьте Gmail, Outlook или другой email сервис</p>
+        <p>3. Скопируйте <strong>Service ID</strong></p>
+    </div>
+
+    <div class="step">
+        <h3>Шаг 3: Создание Email Template</h3>
+        <p>1. Перейдите в "Email Templates"</p>
+        <p>2. Создайте новый шаблон со следующими переменными:</p>
+        <ul>
+            <li><code>{{from_name}}</code> - имя отправителя</li>
+            <li><code>{{from_email}}</code> - email отправителя</li>
+            <li><code>{{phone}}</code> - телефон</li>
+            <li><code>{{department}}</code> - отдел</li>
+            <li><code>{{subject}}</code> - тема</li>
+            <li><code>{{message}}</code> - сообщение</li>
+        </ul>
+        <p>3. Скопируйте <strong>Template ID</strong></p>
+    </div>
+
+    <div class="step">
+        <h3>Шаг 4: Получение Public Key</h3>
+        <p>1. Перейдите в "Account" → "General"</p>
+        <p>2. Скопируйте <strong>Public Key</strong></p>
+    </div>
+
+    <div class="step warning">
+        <h3>Шаг 5: Обновление кода</h3>
+        <p>В файле <code>contacts.html</code> замените:</p>
+        <ul>
+            <li><code>YOUR_PUBLIC_KEY</code> на ваш Public Key</li>
+            <li><code>YOUR_SERVICE_ID</code> на ваш Service ID</li>
+            <li><code>YOUR_TEMPLATE_ID</code> на ваш Template ID</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Альтернативный вариант (без EmailJS)</h3>
+        <p>Если не хотите использовать EmailJS, форма будет:</p>
+        <ul>
+            <li>Сохранять данные в localStorage браузера</li>
+            <li>Показывать пользователю номер телефона для связи</li>
+            <li>Вы сможете просматривать сохраненные заявки в консоли браузера</li>
+        </ul>
+    </div>
+</body>
+</html>
