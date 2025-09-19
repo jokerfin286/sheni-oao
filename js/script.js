@@ -33,26 +33,35 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // Contact Form Handling
-  const contactForm = document.getElementById("contactForm")
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault()
+// Contact Form Handling
+const contactForm = document.getElementById("contactForm")
+if (contactForm) {
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault()
 
-      // Get form data
-      const formData = new FormData(contactForm)
-      const formObject = {}
-      formData.forEach((value, key) => {
-        formObject[key] = value
-      })
+    if (!validateForm(contactForm)) {
+      showNotification("Проверьте правильность заполнения формы", "error")
+      return
+    }
 
-      // Show success message
+    emailjs.sendForm(
+      "service_vspzggq",
+      "template_hyi40qd",
+      "#contactForm",
+      "m9V1HowEGTB20Q6GL"   // public key
+    )
+    .then(() => {
       showNotification("Сообщение отправлено успешно!", "success")
-
-      // Reset form
       contactForm.reset()
     })
-  }
+    .catch((error) => {
+      console.error("Ошибка отправки:", error)
+      showNotification("Ошибка при отправке сообщения", "error")
+    })
+  })
+}
+
+
 
   // Smooth scrolling for anchor links
   const anchorLinks = document.querySelectorAll('a[href^="#"]')

@@ -1114,20 +1114,304 @@
       "dividends": {
         "declared2024": "0 BYN",
         "paid2024": "0 BYN",
-        "perShareDeclared": "0 руб.",
-        "perSharePaid": "0 руб.",
+        "perShareDeclared": "0 BYN.",
+        "perSharePaid": "0 BYN.",
         "paymentPeriod": "нет",
         "decisionDate": "нет",
         "paymentDate": "нет"
       },
       "shareInfo": {
-        "assetBackingPerShare": "67.32 руб.",
+        "assetBackingPerShare": "67.32 BYN.",
         "ownSharesOnBalance": 0,
         "sharesForReduction": 0
       },
       "governance": {
         "website": "www.sheni-oao.com",
         "annualMeetingDate": "11 марта 2022г.",
+        "corporateGovernance": "Регламент работы ОАО \"Шени-агропродукт\" с реестром владельцев ценных бумаг утвержден собранием наблюдательного совета 27 августа 2019 г., Положение о порядке учета аффилированных лиц общества и согласования сделок, в совершении которых имеется заинтересованность аффилированных лиц, утверджено собранием наблюдательного совета 27 августа 2019 г., правила корпоративного поведения приняты на заседании наблюдательного совета 18 февраля 2011 г."
+      },
+      "management": {
+        "director": "Д.Н.Хвостов",
+        "deputyChiefAccountant": "Р.М.Борсук"
+      }
+    }
+  },
+    "2020": {
+    "keyMetrics": {
+      "revenue": "18,369 BYN",
+      "netIncome": "2,950 BYN",
+      "totalAssets": "43,506 BYN",
+      "equity": "34,079 BYN"
+    },
+    "balanceSheet": {
+      "assets": {
+        "currentAssets": {
+          "inventory": {
+            "total": "12,437",
+            "materials": "5,342",
+            "livestock": "5,756",
+            "workInProgress": "1,269",
+            "finishedGoods": "70",
+            "shippedGoods": "0",
+            "otherInventory": "0"
+          },
+          "receivables": "1,225",
+          "cash": "178",
+          "prepaidExpenses": "288",
+          "vat": "288",
+          "longTermAssetsForSale": "0",
+          "shortTermFinancialInvestments": "0",
+          "otherCurrentAssets": "0",
+          "total": "14,416"
+        },
+        "nonCurrentAssets": {
+          "fixedAssets": "28,825",
+          "intangibleAssets": "0",
+          "incomeGeneratingAssets": {
+            "total": "0",
+            "investmentProperty": "0",
+            "leaseAssets": "0",
+            "otherIncomeAssets": "0"
+          },
+          "longTermInvestments": "17",
+          "longTermFinancialInvestments": "62",
+          "deferredTaxAssets": "0",
+          "longTermReceivables": "186",
+          "otherLongTermAssets": "0",
+          "total": "29,090"
+        },
+        "totalAssets": "43,506"
+      },
+      "liabilities": {
+        "currentLiabilities": {
+          "shortTermLoans": "1,235",
+          "shortTermPartOfLongTerm": "2,120",
+          "payables": {
+            "total": "2,561",
+            "suppliers": "1,527",
+            "advances": "0",
+            "taxes": "95",
+            "socialSecurity": "40",
+            "wages": "207",
+            "leasePayments": "692",
+            "owners": "0",
+            "otherCreditors": "0"
+          },
+          "liabilitiesForSale": "0",
+          "deferredIncome": "733",
+          "reserves": "0",
+          "otherCurrentLiabilities": "0",
+          "total": "6,649"
+        },
+        "nonCurrentLiabilities": {
+          "longTermLoans": "1,904",
+          "longTermLeaseObligations": "874",
+          "deferredTaxLiabilities": "0",
+          "deferredIncome": "0",
+          "reserves": "0",
+          "otherLongTermLiabilities": "0",
+          "total": "2,778"
+        },
+        "totalLiabilities": "9,427"
+      },
+      "equity": {
+        "shareCapital": "27,873",
+        "unpaidShareCapital": "0",
+        "ownShares": "0",
+        "reserveCapital": "0",
+        "additionalCapital": "0",
+        "retainedEarnings": "6,206",
+        "netIncome": "0",
+        "targetFinancing": "0",
+        "totalEquity": "34,079"
+      }
+    },
+    "incomeStatement": {
+      "revenue": "18,369",
+      "costOfSales": "14,403",
+      "grossProfit": "3,966",
+      "managementExpenses": "1,391",
+      "salesExpenses": "0",
+      "operatingProfit": "2,575",
+      "otherOperatingIncome": "944",
+      "otherOperatingExpenses": "316",
+      "profitFromCurrentActivity": "3,203",
+      "investmentIncome": {
+        "total": "211",
+        "assetDisposal": "172",
+        "participationIncome": "0",
+        "interestReceived": "0",
+        "otherInvestmentIncome": "39"
+      },
+      "investmentExpenses": {
+        "total": "142",
+        "assetDisposalExpenses": "115",
+        "otherInvestmentExpenses": "27"
+      },
+      "financialIncome": {
+        "total": "7",
+        "currencyDifferences": "0",
+        "otherFinancialIncome": "7"
+      },
+      "financialExpenses": {
+        "total": "329",
+        "interestPayable": "175",
+        "currencyDifferences": "154",
+        "otherFinancialExpenses": "0"
+      },
+      "investmentAndFinancialResult": "-253",
+      "profitBeforeTax": "2,950",
+      "incomeTax": "0",
+      "deferredTaxAssets": "0",
+      "deferredTaxLiabilities": "0",
+      "otherTaxes": "0",
+      "otherPayments": "0",
+      "netIncome": "2,950",
+      "revaluationResult": "0",
+      "otherOperationsResult": "0",
+      "comprehensiveIncome": "2,950",
+      "basicEarningsPerShare": "5.29",
+      "dilutedEarningsPerShare": "0"
+    },
+    "equityChanges": {
+      "beginningBalance": {
+        "shareCapital": "27,873",
+        "additionalCapital": "0",
+        "retainedEarnings": "3,256",
+        "total": "31,129"
+      },
+      "increases": {
+        "total": "2,950",
+        "netIncome": "2,950",
+        "revaluation": "0",
+        "shareCapitalIncrease": "0"
+      },
+      "decreases": {
+        "total": "0"
+      },
+      "endingBalance": {
+        "shareCapital": "27,873",
+        "additionalCapital": "0",
+        "retainedEarnings": "6,206",
+        "total": "34,079"
+      }
+    },
+    "cashFlow": {
+      "operatingActivities": {
+        "cashReceived": {
+          "total": "17,323",
+          "fromCustomers": "16,527",
+          "fromMaterialSales": "222",
+          "royalties": "0",
+          "otherReceipts": "574"
+        },
+        "cashPaid": {
+          "total": "15,250",
+          "forInventory": "10,155",
+          "forWages": "3,242",
+          "forTaxes": "703",
+          "otherPayments": "1,150"
+        },
+        "netCashFromOperating": "2,073"
+      },
+      "investingActivities": {
+        "cashReceived": {
+          "total": "18",
+          "fromAssetSales": "18",
+          "loanReturns": "0",
+          "participationIncome": "0",
+          "interest": "0",
+          "otherReceipts": "0"
+        },
+        "cashPaid": {
+          "total": "0",
+          "forAssets": "0",
+          "forLoans": "0",
+          "forInvestments": "0",
+          "otherPayments": "0"
+        },
+        "netCashFromInvesting": "18"
+      },
+      "financingActivities": {
+        "cashReceived": {
+          "total": "2,261",
+          "loansReceived": "2,261",
+          "shareIssue": "0",
+          "ownerContributions": "0",
+          "otherReceipts": "0"
+        },
+        "cashPaid": {
+          "total": "4,262",
+          "loanRepayments": "3,125",
+          "dividends": "0",
+          "interestPaid": "175",
+          "leasePayments": "962",
+          "otherPayments": "0"
+        },
+        "netCashFromFinancing": "-2,001"
+      },
+      "netCashFlow": "90",
+      "cashAtBeginning": "88",
+      "cashAtEnd": "178",
+      "currencyEffect": "0"
+    },
+    "companyInfo": {
+      "employees": 307,
+      "shareholders": {
+        "total": 845,
+        "legal": 1,
+        "individual": 844,
+        "nonResidents": 0
+      },
+      "ownership": {
+        "stateShare": "5.0961%",
+        "republican": {
+          "shares": 0,
+          "percentage": "0%"
+        },
+        "communal": {
+          "total": {
+            "shares": 28409,
+            "percentage": "5.0961%"
+          },
+          "regional": {
+            "shares": 0,
+            "percentage": "0%"
+          },
+          "district": {
+            "shares": 28409,
+            "percentage": "5.0961%"
+          },
+          "city": {
+            "shares": 0,
+            "percentage": "0%"
+          }
+        }
+      },
+      "mainProducts": [
+        {
+          "name": "Молоко",
+          "revenue": "14,048 BYN",
+          "share": "73.26%"
+        }
+      ],
+      "dividends": {
+        "declared2020": "0 BYN",
+        "paid2020": "0 BYN",
+        "perShareDeclared": "0 BYN",
+        "perSharePaid": "0 BYN.",
+        "paymentPeriod": "нет",
+        "decisionDate": "нет",
+        "paymentDate": "нет"
+      },
+      "shareInfo": {
+        "assetBackingPerShare": "61.13 BYN.",
+        "ownSharesOnBalance": 0,
+        "sharesForReduction": 0
+      },
+      "governance": {
+        "website": "www.sheni-oao.com",
+        "annualMeetingDate": "5 марта 2021г.",
         "corporateGovernance": "Регламент работы ОАО \"Шени-агропродукт\" с реестром владельцев ценных бумаг утвержден собранием наблюдательного совета 27 августа 2019 г., Положение о порядке учета аффилированных лиц общества и согласования сделок, в совершении которых имеется заинтересованность аффилированных лиц, утверджено собранием наблюдательного совета 27 августа 2019 г., правила корпоративного поведения приняты на заседании наблюдательного совета 18 февраля 2011 г."
       },
       "management": {

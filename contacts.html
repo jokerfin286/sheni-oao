@@ -444,7 +444,7 @@
                             <input type="tel" name="phone" placeholder="Телефон" required>
                         </div>
                         <input type="email" name="email" placeholder="Email" required>
-                        <select name="department" required>
+                            <select name="department" required>
                             <option value="">Выберите отдел</option>
                             <option value="management">Руководство</option>
                             <option value="production">Производственный отдел</option>
@@ -452,7 +452,7 @@
                             <option value="technical">Технические службы</option>
                             <option value="hr">Отдел кадров</option>
                             <option value="other">Другое</option>
-                        </select>
+                            </select>
                         <input type="text" name="subject" placeholder="Тема сообщения" required>
                         <textarea name="message" placeholder="Ваше сообщение" rows="5" required></textarea>
                         <button type="submit" class="btn btn-primary btn-full">
@@ -634,9 +634,40 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     (function(){
-      emailjs.init("JTdkUVa9Hy4aEdCU-");
+      emailjs.init("m9V1HowEGTB20Q6GL");
     })();
   </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Подставляем тему письма
+  const subject = urlParams.get("subject");
+  if (subject) {
+    const subjectInput = document.querySelector("input[name='subject']");
+    if (subjectInput) subjectInput.value = subject;
+  }
+
+  // Подставляем отдел
+  const department = urlParams.get("department");
+  if (department) {
+    const select = document.querySelector("select[name='department']");
+    if (select) select.value = department;
+  }
+
+  // Скроллим к форме с учётом шапки
+  if (window.location.hash.includes("contactForm")) {
+    const formSection = document.querySelector("#contactForm");
+    if (formSection) {
+      setTimeout(() => {
+        const offset = formSection.getBoundingClientRect().top + window.scrollY - 350;
+        window.scrollTo({ top: offset, behavior: "smooth" });
+      }, 300);
+    }
+  }
+});
+</script>
 
   <!-- Leaflet карта -->
   <script>
