@@ -23,50 +23,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function disableScroll() {
-    // Сохраняем текущую позицию скролла
     scrollPosition = window.pageYOffset || document.documentElement.scrollTop
 
-    // Применяем классы блокировки
-    
+    // Запрещаем прокрутку
+    document.body.classList.add("mobile-menu-open")
     document.documentElement.classList.add("mobile-menu-open")
 
-    // Фиксируем позицию body
-    document.body.style.position = "fixed"
-    document.body.style.top = `-${scrollPosition}px`
-    document.body.style.left = "0"
-    document.body.style.right = "0"
-    document.body.style.width = "100%"
-
-    // Блокируем все события скролла
-    document.addEventListener("touchmove", preventScroll, { passive: false })
-    document.addEventListener("wheel", preventScroll, { passive: false })
-    document.addEventListener("keydown", preventScrollKeys, { passive: false })
-    document.addEventListener("touchstart", preventScroll, { passive: false })
-    document.addEventListener("touchend", preventScroll, { passive: false })
+    // Только скрываем скролл, но не ломаем клики
+    document.body.style.overflow = "hidden"
   }
+
 
   function enableScroll() {
-    // Убираем классы блокировки
-    
+    document.body.classList.remove("mobile-menu-open")
     document.documentElement.classList.remove("mobile-menu-open")
 
-    // Восстанавливаем стили body
-    document.body.style.position = ""
-    document.body.style.top = ""
-    document.body.style.left = ""
-    document.body.style.right = ""
-    document.body.style.width = ""
+    document.body.style.overflow = ""
 
-    // Восстанавливаем позицию скролла
+    // возвращаем скролл
     window.scrollTo(0, scrollPosition)
-
-    // Убираем блокировку событий
-    document.removeEventListener("touchmove", preventScroll)
-    document.removeEventListener("wheel", preventScroll)
-    document.removeEventListener("keydown", preventScrollKeys)
-    document.removeEventListener("touchstart", preventScroll)
-    document.removeEventListener("touchend", preventScroll)
   }
+
 
   if (mobileMenuBtn && mobileMenu && mobileMenuOverlay) {
     // Открытие меню
