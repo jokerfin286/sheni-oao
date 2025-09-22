@@ -6,13 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileMenuClose = document.getElementById("mobileMenuClose")
   const accessibilityPanel = document.getElementById("accessibilityPanel")
 
+  let scrollPosition = 0
+
   if (mobileMenuBtn && mobileMenu && mobileMenuOverlay) {
     // Открытие меню
     mobileMenuBtn.addEventListener("click", () => {
+      scrollPosition = window.pageYOffset
       mobileMenu.classList.add("active")
       mobileMenuOverlay.classList.add("active")
       mobileMenuBtn.classList.add("active")
-      document.body.style.overflow = "hidden"
+      document.body.classList.add("mobile-menu-open")
+      document.body.style.top = `-${scrollPosition}px`
 
       if (accessibilityPanel) {
         accessibilityPanel.style.display = "none"
@@ -46,7 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileMenu.classList.remove("active")
       mobileMenuOverlay.classList.remove("active")
       mobileMenuBtn.classList.remove("active")
-      document.body.style.overflow = ""
+      
+      document.body.classList.remove("mobile-menu-open")
+      document.body.style.top = " "
+      window.scrollTo(0, scrollPosition)
 
       if (accessibilityPanel) {
         accessibilityPanel.style.display = "block"
