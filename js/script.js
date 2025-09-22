@@ -8,15 +8,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let scrollPosition = 0
 
+  function preventScroll(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    return false
+  }
+
+  function disableScroll() {
+    // Сохраняем текущую позицию скролла
+    scrollPosition = window.pageYOffset
+
+    document.body.classList.add("mobile-menu-open")
+    document.documentElement.classList.add("mobile-menu-open")
+    document.body.style.top = `-${scrollPosition}px`
+
+    // Блокируем touch события для предотвращения скролла
+    document.addEventListener("touchmove", preventScroll, { passive: false })
+    document.addEventListener("wheel", preventScroll, { passive: false })
+    document.addEventListener("keydown", preventScrollKeys, { passive: false })
+  }
+
+  function enableScroll() {
+    document.body.classList.remove("mobile-menu-open")
+    document.documentElement.classList.remove("mobile-menu-open")
+    document.body.style.top = ""
+
+    // Восстанавливаем позицию скролла
+    window.scrollTo(0, scrollPosition)
+
+    // Убираем блокировку событий
+    document.removeEventListener("touchmove", preventScroll)
+    document.removeEventListener("wheel", preventScroll)
+    document.removeEventListener("keydown", preventScrollKeys)
+  }
+
+  function preventScrollKeys(e) {
+    const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40] // space, page up/down, home, end, arrows
+    if (keys.includes(e.keyCode)) {
+      e.preventDefault()
+      return false
+    }
+  }
+
   if (mobileMenuBtn && mobileMenu && mobileMenuOverlay) {
     // Открытие меню
     mobileMenuBtn.addEventListener("click", () => {
-      scrollPosition = window.pageYOffset
       mobileMenu.classList.add("active")
       mobileMenuOverlay.classList.add("active")
       mobileMenuBtn.classList.add("active")
-      document.body.classList.add("mobile-menu-open")
-      document.body.style.top = `-${scrollPosition}px`
+
+      disableScroll()
 
       if (accessibilityPanel) {
         accessibilityPanel.style.display = "none"
@@ -50,10 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileMenu.classList.remove("active")
       mobileMenuOverlay.classList.remove("active")
       mobileMenuBtn.classList.remove("active")
-      
-      document.body.classList.remove("mobile-menu-open")
-      document.body.style.top = " "
-      window.scrollTo(0, scrollPosition)
+
+      enableScroll()
 
       if (accessibilityPanel) {
         accessibilityPanel.style.display = "block"
