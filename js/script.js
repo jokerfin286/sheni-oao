@@ -2,66 +2,94 @@
 document.addEventListener("DOMContentLoaded", () => {
   const mobileMenuBtn = document.getElementById("mobileMenuBtn")
   const mobileMenu = document.getElementById("mobileMenu")
+  const mobileMenuOverlay = document.getElementById("mobileMenuOverlay")
+  const mobileMenuClose = document.getElementById("mobileMenuClose")
+  const accessibilityPanel = document.getElementById("accessibilityPanel")
 
-  if (mobileMenuBtn && mobileMenu) {
+  if (mobileMenuBtn && mobileMenu && mobileMenuOverlay) {
+    // Открытие меню
     mobileMenuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("active")
+      mobileMenu.classList.add("active")
+      mobileMenuOverlay.classList.add("active")
+      mobileMenuBtn.classList.add("active")
+      document.body.style.overflow = "hidden"
 
-      // Animate hamburger menu
-      const spans = mobileMenuBtn.querySelectorAll("span")
-      if (mobileMenu.classList.contains("active")) {
-        spans[0].style.transform = "rotate(45deg) translate(5px, 5px)"
-        spans[1].style.opacity = "0"
-        spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)"
-      } else {
-        spans[0].style.transform = "none"
-        spans[1].style.opacity = "1"
-        spans[2].style.transform = "none"
+      if (accessibilityPanel) {
+        accessibilityPanel.style.display = "none"
       }
     })
 
-    // Close mobile menu when clicking on a link
-    const mobileNavLinks = mobileMenu.querySelectorAll(".nav-link")
+    // Закрытие меню через кнопку закрытия
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener("click", closeMenu)
+    }
+
+    // Закрытие меню через оверлей
+    mobileMenuOverlay.addEventListener("click", closeMenu)
+
+    // Закрытие меню при клике на ссылку
+    const mobileNavLinks = mobileMenu.querySelectorAll(".mobile-nav-link")
     mobileNavLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        mobileMenu.classList.remove("active")
-        const spans = mobileMenuBtn.querySelectorAll("span")
-        spans[0].style.transform = "none"
-        spans[1].style.opacity = "1"
-        spans[2].style.transform = "none"
+        setTimeout(closeMenu, 150) // Небольшая задержка для плавности
       })
+    })
+
+    // Закрытие меню по Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+        closeMenu()
+      }
+    })
+
+    function closeMenu() {
+      mobileMenu.classList.remove("active")
+      mobileMenuOverlay.classList.remove("active")
+      mobileMenuBtn.classList.remove("active")
+      document.body.style.overflow = ""
+
+      if (accessibilityPanel) {
+        accessibilityPanel.style.display = "block"
+      }
+    }
+
+    // Обработка изменения размера окна
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024 && mobileMenu.classList.contains("active")) {
+        closeMenu()
+      }
     })
   }
 
-// Contact Form Handling
-const contactForm = document.getElementById("contactForm")
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+  // Contact Form Handling
+  const contactForm = document.getElementById("contactForm")
+  const emailjs = window.emailjs // Declare the emailjs variable
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault()
 
-    if (!validateForm(contactForm)) {
-      showNotification("Проверьте правильность заполнения формы", "error")
-      return
-    }
+      if (!validateForm(contactForm)) {
+        showNotification("Проверьте правильность заполнения формы", "error")
+        return
+      }
 
-    emailjs.sendForm(
-      "service_vspzggq",
-      "template_hyi40qd",
-      "#contactForm",
-      "m9V1HowEGTB20Q6GL"   // public key
-    )
-    .then(() => {
-      showNotification("Сообщение отправлено успешно!", "success")
-      contactForm.reset()
+      emailjs
+        .sendForm(
+          "service_vspzggq",
+          "template_hyi40qd",
+          "#contactForm",
+          "m9V1HowEGTB20Q6GL", // public key
+        )
+        .then(() => {
+          showNotification("Сообщение отправлено успешно!", "success")
+          contactForm.reset()
+        })
+        .catch((error) => {
+          console.error("Ошибка отправки:", error)
+          showNotification("Ошибка при отправке сообщения", "error")
+        })
     })
-    .catch((error) => {
-      console.error("Ошибка отправки:", error)
-      showNotification("Ошибка при отправке сообщения", "error")
-    })
-  })
-}
-
-
+  }
 
   // Smooth scrolling for anchor links
   const anchorLinks = document.querySelectorAll('a[href^="#"]')
@@ -226,7 +254,7 @@ function validateForm(form) {
 
     // Phone validation
     if (input.type === "tel" && input.value) {
-      const phoneRegex = /^[+]?[0-9\s\-$$$$]{10,}$/
+      const phoneRegex = /^[+]?[0-9\s\-()]{10,}$/
       if (!phoneRegex.test(input.value)) {
         input.style.borderColor = "#ef4444"
         isValid = false
@@ -325,89 +353,112 @@ function initBackToTop() {
   })
 }
 
-
 // Initialize back to top button
 document.addEventListener("DOMContentLoaded", initBackToTop)
 
-document.addEventListener("DOMContentLoaded", function () {
-  const panel = document.getElementById("accessibilityPanel");
-  const toggleBtn = document.getElementById("panelToggle");
-  const content = panel.querySelector(".panel-content");
+document.addEventListener("DOMContentLoaded", () => {
+  const panel = document.getElementById("accessibilityPanel")
+  const toggleBtn = document.getElementById("panelToggle")
+  const content = panel.querySelector(".panel-content")
 
   // Открытие/закрытие панели
   toggleBtn.addEventListener("click", () => {
-    content.style.display = content.style.display === "block" ? "none" : "block";
-  });
+    content.style.display = content.style.display === "block" ? "none" : "block"
+  })
+
+  document.addEventListener("click", (e) => {
+    if (!panel.contains(e.target) && content.style.display === "block") {
+      content.style.display = "none"
+    }
+  })
 
   // Подстраиваем цвета панели под тему сайта
   function updatePanelColors() {
-    const theme = document.documentElement.getAttribute("data-theme") || "light";
-    let bg = "#fff", color = "#000";
-    if (theme === "dark") { bg = "#333"; color = "#eee"; }
+    const theme = document.documentElement.getAttribute("data-theme") || "light"
+    let bg = "#fff",
+      color = "#000"
+    if (theme === "dark") {
+      bg = "#333"
+      color = "#eee"
+    }
 
-    panel.style.setProperty("--panel-bg", bg);
-    panel.style.setProperty("--panel-color", color);
+    panel.style.setProperty("--panel-bg", bg)
+    panel.style.setProperty("--panel-color", color)
 
-    panel.querySelectorAll(".control-btn").forEach(btn => {
-      btn.style.color = color;
-      btn.style.borderColor = color;
-    });
+    panel.querySelectorAll(".control-btn").forEach((btn) => {
+      btn.style.color = color
+      btn.style.borderColor = color
+    })
   }
 
-  updatePanelColors();
-  const observer = new MutationObserver(updatePanelColors);
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  updatePanelColors()
+  const observer = new MutationObserver(updatePanelColors)
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] })
 
   // Цвет сайта
-  const colorButtons = panel.querySelectorAll("[data-color]");
-  colorButtons.forEach(btn => {
+  const colorButtons = panel.querySelectorAll("[data-color]")
+  colorButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const color = btn.getAttribute("data-color");
-      let bg, text;
-      switch(color) {
-        case "blue": bg = "#e0f2ff"; text = "#1e3a8a"; break;
-        case "yellow": bg = "#fef9c3"; text = "#92400e"; break;
-        case "green": bg = "#dcfce7"; text = "#166534"; break;
-        default: bg = ""; text = ""; break;
+      const color = btn.getAttribute("data-color")
+      let bg, text
+      switch (color) {
+        case "blue":
+          bg = "#e0f2ff"
+          text = "#1e3a8a"
+          break
+        case "yellow":
+          bg = "#fef9c3"
+          text = "#92400e"
+          break
+        case "green":
+          bg = "#dcfce7"
+          text = "#166534"
+          break
+        default:
+          bg = ""
+          text = ""
+          break
       }
-      document.querySelectorAll("body, header, footer, section, div, nav, p, h1,h2,h3,h4,h5,h6,a,span").forEach(el => {
-        el.style.backgroundColor = bg;
-        el.style.color = text;
-      });
-    });
-  });
+      document
+        .querySelectorAll("body, header, footer, section, div, nav, p, h1,h2,h3,h4,h5,h6,a,span")
+        .forEach((el) => {
+          el.style.backgroundColor = bg
+          el.style.color = text
+        })
+    })
+  })
 
   // Размер шрифта на весь сайт
-  const fontButtons = panel.querySelectorAll("[data-font]");
-  fontButtons.forEach(btn => {
+  const fontButtons = panel.querySelectorAll("[data-font]")
+  fontButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const scale = btn.getAttribute("data-font");
-      document.documentElement.style.fontSize = scale + "em";
-      document.body.style.fontSize = scale + "em";
-    });
-  });
+      const scale = btn.getAttribute("data-font")
+      document.documentElement.style.fontSize = scale + "em"
+      document.body.style.fontSize = scale + "em"
+    })
+  })
 
   // Подсветка ссылок
-  const highlightLinksBtn = document.getElementById("highlightLinks");
+  const highlightLinksBtn = document.getElementById("highlightLinks")
   highlightLinksBtn?.addEventListener("click", () => {
-    document.querySelectorAll("a").forEach(a => {
-      if(!a.style.outline) {
-        a.style.outline = "2px solid #ff0";
-        a.style.backgroundColor = "#333";
-        a.style.color = "#ff0";
+    document.querySelectorAll("a").forEach((a) => {
+      if (!a.style.outline) {
+        a.style.outline = "2px solid #ff0"
+        a.style.backgroundColor = "#333"
+        a.style.color = "#ff0"
       } else {
-        a.style.outline = "";
-        a.style.backgroundColor = "";
-        a.style.color = "";
+        a.style.outline = ""
+        a.style.backgroundColor = ""
+        a.style.color = ""
       }
-    });
-  });
+    })
+  })
 
   // Скрыть/показ изображений
-  const toggleImagesBtn = document.getElementById("toggleImages");
+  const toggleImagesBtn = document.getElementById("toggleImages")
   toggleImagesBtn?.addEventListener("click", () => {
-    document.querySelectorAll("img").forEach(img => {
-      img.style.display = img.style.display === "none" ? "" : "none";
-    });
-  });
-});
+    document.querySelectorAll("img").forEach((img) => {
+      img.style.display = img.style.display === "none" ? "" : "none"
+    })
+  })
+})
