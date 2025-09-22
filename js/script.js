@@ -14,24 +14,48 @@ document.addEventListener("DOMContentLoaded", () => {
     return false
   }
 
+  function preventScrollKeys(e) {
+    const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40] // space, page up/down, home, end, arrows
+    if (keys.includes(e.keyCode)) {
+      e.preventDefault()
+      return false
+    }
+  }
+
   function disableScroll() {
     // Сохраняем текущую позицию скролла
-    scrollPosition = window.pageYOffset
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop
 
-    document.body.classList.add("mobile-menu-open")
+    // Применяем классы блокировки
+    
     document.documentElement.classList.add("mobile-menu-open")
-    document.body.style.top = `-${scrollPosition}px`
 
-    // Блокируем touch события для предотвращения скролла
+    // Фиксируем позицию body
+    document.body.style.position = "fixed"
+    document.body.style.top = `-${scrollPosition}px`
+    document.body.style.left = "0"
+    document.body.style.right = "0"
+    document.body.style.width = "100%"
+
+    // Блокируем все события скролла
     document.addEventListener("touchmove", preventScroll, { passive: false })
     document.addEventListener("wheel", preventScroll, { passive: false })
     document.addEventListener("keydown", preventScrollKeys, { passive: false })
+    document.addEventListener("touchstart", preventScroll, { passive: false })
+    document.addEventListener("touchend", preventScroll, { passive: false })
   }
 
   function enableScroll() {
-    document.body.classList.remove("mobile-menu-open")
+    // Убираем классы блокировки
+    
     document.documentElement.classList.remove("mobile-menu-open")
+
+    // Восстанавливаем стили body
+    document.body.style.position = ""
     document.body.style.top = ""
+    document.body.style.left = ""
+    document.body.style.right = ""
+    document.body.style.width = ""
 
     // Восстанавливаем позицию скролла
     window.scrollTo(0, scrollPosition)
@@ -40,14 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.removeEventListener("touchmove", preventScroll)
     document.removeEventListener("wheel", preventScroll)
     document.removeEventListener("keydown", preventScrollKeys)
-  }
-
-  function preventScrollKeys(e) {
-    const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40] // space, page up/down, home, end, arrows
-    if (keys.includes(e.keyCode)) {
-      e.preventDefault()
-      return false
-    }
+    document.removeEventListener("touchstart", preventScroll)
+    document.removeEventListener("touchend", preventScroll)
   }
 
   if (mobileMenuBtn && mobileMenu && mobileMenuOverlay) {

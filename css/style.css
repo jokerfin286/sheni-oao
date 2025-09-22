@@ -202,8 +202,8 @@ p {
   position: fixed;
   top: 20px;
   right: 20px;
-  font-family: 'Inter', sans-serif;
-  z-index: 10001;
+  font-family: "Inter", sans-serif;
+  z-index: 10001; /* Увеличиваю z-index чтобы панель была поверх мобильного меню */
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   background-color: var(--panel-bg, rgba(255, 255, 255, 0.95));
@@ -243,7 +243,6 @@ p {
   color: var(--panel-bg, #fff);
 }
 
-
 .lang-switcher {
   display: flex;
   gap: 8px;
@@ -260,19 +259,19 @@ p {
   font-size: 14px;
   font-weight: 500;
   transition: all 0.3s ease;
-  box-shadow: 0 0 0 rgba(0,0,0,0); /* плавная тень */
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* плавная тень */
 }
 
 .lang-btn:hover {
   background: var(--color-primary);
   color: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .lang-btn.active {
   background: var(--color-primary);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .nav {
@@ -307,8 +306,6 @@ p {
   display: none !important;
 }
 
-
-
 .desktop-nav {
   display: none;
   flex-wrap: wrap; /* разрешаем перенос */
@@ -317,7 +314,6 @@ p {
   max-width: 1000px;
   margin: 0 auto;
 }
-
 
 .mobile-menu-btn {
   display: flex;
@@ -328,8 +324,8 @@ p {
   cursor: pointer;
   padding: 0.5rem;
   position: relative;
-  z-index: 998;
-  transition: all 0.3s ease;
+  z-index: 998; /* Понижаю z-index чтобы кнопка была под мобильной панелью */
+  transition: all 0.3s ease; /* Добавляю плавный переход */
 }
 
 .mobile-menu-btn span {
@@ -347,13 +343,27 @@ p {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
+  backdrop-filter: none;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 999;
+  /* Предотвращаю скролл на overlay */
   overscroll-behavior: contain;
   touch-action: none;
+  
+  /* Размытие всего сайта, кроме мобильного меню */
+body.mobile-menu-open .header,
+body.mobile-menu-open main,
+body.mobile-menu-open footer {
+  filter: blur(6px);
+  transition: filter 0.3s ease;
+}
+
+body.mobile-menu-open .mobile-menu-sidebar {
+  filter: none !important;
+}
+
 }
 
 .mobile-menu-overlay.active {
@@ -370,10 +380,11 @@ p {
   background: var(--bg-primary);
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
   transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: 1000;
+  z-index: 1001;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  /* Улучшаю скролл в мобильном меню */
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
@@ -2529,4 +2540,71 @@ p {
   border-color: #1e7e34;
 }
 
+/* Адаптивность мобильного меню */
+@media (max-width: 360px) {
+  .mobile-menu-sidebar {
+    width: 100vw;
+    right: -100vw;
+  }
 
+  .accessibility-panel {
+    top: 10px;
+    right: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Улучшаю стили для сенсорных устройств */
+@media (hover: none) and (pointer: coarse) {
+  .mobile-nav-link {
+    min-height: 48px; /* Минимальная высота для удобного нажатия пальцем */
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-menu-btn {
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Исправляю блюр - убираю размытие с самого меню и улучшаю блокировку скролла */
+body.mobile-menu-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100vh !important;
+  touch-action: none !important;
+  overscroll-behavior: none !important;
+}
+
+/* Размытие только для основного контента, НЕ для мобильного меню */
+body.mobile-menu-open .header:not(.mobile-menu):not(.mobile-nav):not(.mobile-menu-overlay),
+body.mobile-menu-open .main,
+body.mobile-menu-open .footer {
+  filter: blur(3px);
+  transition: filter 0.3s ease;
+  pointer-events: none;
+}
+
+/* Убираем размытие с мобильного меню и его элементов */
+body.mobile-menu-open .mobile-menu,
+body.mobile-menu-open .mobile-nav,
+body.mobile-menu-open .mobile-menu-overlay,
+body.mobile-menu-open .mobile-menu-btn {
+  filter: none !important;
+  pointer-events: auto !important;
+}
+
+/* Дополнительная блокировка для html элемента */
+html.mobile-menu-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100vh !important;
+  touch-action: none !important;
+  overscroll-behavior: none !important;
+}
