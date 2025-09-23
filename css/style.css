@@ -2578,9 +2578,6 @@ body.mobile-menu-open {
   height: 100%;
 }
 
-
-
-
 /* Дополнительная блокировка для html элемента */
 html.mobile-menu-open {
   overflow: hidden !important;
@@ -2590,3 +2587,53 @@ html.mobile-menu-open {
   touch-action: none !important;
   overscroll-behavior: none !important;
 }
+
+/* Контейнер медиа */
+.article-media {
+  display: block;          /* показываем контейнер */
+  width: 100%;             /* занимает всю ширину родителя */
+  max-width: 100%;         /* не вылезает за пределы */
+  margin: 1rem 0;          /* отступы сверху и снизу */
+}
+
+/* Изображения внутри контейнера */
+.article-media img {
+  width: 100%;             /* растягиваем под ширину контейнера */
+  max-width: 100%;         /* не выходит за пределы */
+  height: auto;            /* сохраняем пропорции */
+  display: block;          /* убираем лишние отступы */
+  border-radius: 6px;      /* скругление по желанию */
+  object-fit: cover;       /* красиво подстраивает изображение */
+}
+
+/* Видео внутри контейнера */
+.article-media video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.article-media img {
+  border-radius: 12px; /* скругление */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0;
+}
+.article-media video {
+  max-width: 100%;
+  display: block;
+  margin: 10px 0;
+}
+
+.article-content img {
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0;
+}
+
+
+
