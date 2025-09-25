@@ -2022,3 +2022,59 @@
   display: block;
   margin: 10px 0;
 } 
+
+/* Гарантия отсутствия горизонтального скролла */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Убедимся, что мобильное меню не создает скролл */
+.mobile-menu-sidebar {
+    right: -100%;
+    width: 320px;
+    max-width: 100vw; /* Ограничиваем ширину */
+}
+
+.mobile-menu-sidebar.active {
+    right: 0;
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .mobile-menu-sidebar {
+        width: 100vw;
+        right: -100vw;
+    }
+    
+    .mobile-menu-sidebar.active {
+        right: 0;
+    }
+}
+
+/* Блокировка скролла при открытом меню */
+body.mobile-menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* Улучшаем оверлей */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
