@@ -9,7 +9,12 @@ const PORT = 3001
 
 // Middleware
 app.use(cors())
-app.use(express.json())
+
+// Увеличиваем лимит для JSON и form-data, чтобы избежать ошибки 413
+app.use(express.json({ limit: "50mb" }))
+app.use(express.urlencoded({ limit: "50mb", extended: true }))
+
+// Статические файлы
 app.use(express.static("."))
 
 // Настройка multer для загрузки файлов
@@ -24,7 +29,6 @@ const storage = multer.diskStorage({
     cb(null, dir)
   },
   filename: (req, file, cb) => {
-    // Генерируем безопасное имя файла
     const ext = path.extname(file.originalname)
     const name = file.originalname.replace(ext, "").replace(/[^a-zA-Z0-9а-яё\-_]/gi, "-")
     const timestamp = Date.now()
@@ -48,7 +52,7 @@ const upload = multer({
   },
 })
 
-// API Routes
+// ======================= ROUTES =======================
 
 // Получить все новости
 app.get("/api/news", async (req, res) => {
@@ -65,12 +69,12 @@ app.get("/api/news", async (req, res) => {
 // Сохранить новости
 app.post("/api/news", async (req, res) => {
   try {
-    // Создаем директорию data если её нет
     await fs.mkdir("data", { recursive: true })
 
-    // Удаляем дубликаты по id
     const posts = req.body.posts || []
-    const uniquePosts = posts.filter((post, index, arr) => arr.findIndex((p) => p.id === post.id) === index)
+    const uniquePosts = posts.filter(
+      (post, index, arr) => arr.findIndex((p) => p.id === post.id) === index
+    )
 
     const newsData = { posts: uniquePosts }
     await fs.writeFile("data/news.json", JSON.stringify(newsData, null, 2), "utf8")
@@ -112,6 +116,7 @@ app.delete("/api/media/:filename", async (req, res) => {
   }
 })
 
+// ======================= SERVER =======================
 app.listen(PORT, () => {
   console.log(`🚀 Локальный сервер запущен на http://localhost:${PORT}`)
   console.log(`📝 Админка доступна по адресу: http://localhost:${PORT}/news-admin-local.html`)

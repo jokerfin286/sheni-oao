@@ -8,42 +8,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let scrollPosition = 0
 
-  function preventScroll(e) {
-    e.preventDefault()
-    e.stopPropagation()
-    return false
-  }
-
-  function preventScrollKeys(e) {
-    const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40] // space, page up/down, home, end, arrows
-    if (keys.includes(e.keyCode)) {
-      e.preventDefault()
-      return false
-    }
-  }
-
   function disableScroll() {
     scrollPosition = window.pageYOffset || document.documentElement.scrollTop
-
-    // Запрещаем прокрутку
+    
+    // Полная блокировка скролла
     document.body.classList.add("mobile-menu-open")
     document.documentElement.classList.add("mobile-menu-open")
-
-    // Только скрываем скролл, но не ломаем клики
+    
+    // Фиксируем позицию и скрываем скролл
     document.body.style.overflow = "hidden"
+    document.body.style.position = "fixed"
+    document.body.style.top = `-${scrollPosition}px`
+    document.body.style.width = "100%"
+    document.body.style.height = "100vh"
   }
 
-
   function enableScroll() {
+    // Восстанавливаем скролл
     document.body.classList.remove("mobile-menu-open")
     document.documentElement.classList.remove("mobile-menu-open")
-
+    
     document.body.style.overflow = ""
-
-    // возвращаем скролл
+    document.body.style.position = ""
+    document.body.style.top = ""
+    document.body.style.width = ""
+    document.body.style.height = ""
+    
+    // Возвращаем позицию скролла
     window.scrollTo(0, scrollPosition)
   }
 
+  function closeMenu() {
+    mobileMenu.classList.remove("active")
+    mobileMenuOverlay.classList.remove("active")
+    mobileMenuBtn.classList.remove("active")
+
+    enableScroll()
+
+    if (accessibilityPanel) {
+      accessibilityPanel.style.display = "block"
+    }
+  }
 
   if (mobileMenuBtn && mobileMenu && mobileMenuOverlay) {
     // Открытие меню
@@ -71,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileNavLinks = mobileMenu.querySelectorAll(".mobile-nav-link")
     mobileNavLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        setTimeout(closeMenu, 150) // Небольшая задержка для плавности
+        setTimeout(closeMenu, 150)
       })
     })
 
@@ -81,18 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
         closeMenu()
       }
     })
-
-    function closeMenu() {
-      mobileMenu.classList.remove("active")
-      mobileMenuOverlay.classList.remove("active")
-      mobileMenuBtn.classList.remove("active")
-
-      enableScroll()
-
-      if (accessibilityPanel) {
-        accessibilityPanel.style.display = "block"
-      }
-    }
 
     // Обработка изменения размера окна
     window.addEventListener("resize", () => {
@@ -104,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Contact Form Handling
   const contactForm = document.getElementById("contactForm")
-  const emailjs = window.emailjs // Declare the emailjs variable
+  const emailjs = window.emailjs
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault()
@@ -119,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "service_vspzggq",
           "template_hyi40qd",
           "#contactForm",
-          "m9V1HowEGTB20Q6GL", // public key
+          "m9V1HowEGTB20Q6GL",
         )
         .then(() => {
           showNotification("Сообщение отправлено успешно!", "success")
@@ -183,10 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop
 
     if (scrollTop > lastScrollTop && scrollTop > 100) {
-      // Scrolling down
       header.style.transform = "translateY(-100%)"
     } else {
-      // Scrolling up
       header.style.transform = "translateY(0)"
     }
 
@@ -196,6 +187,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add scroll transition to header
   header.style.transition = "transform 0.3s ease"
 })
+
+// Остальные функции остаются без изменений...
 
 // Notification system
 function showNotification(message, type = "info") {
