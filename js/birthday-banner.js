@@ -55,7 +55,7 @@ function showBirthdayBanner(name) {
     </div>
     <div class="birthday-banner-text">
       <h3>С днем рождения!</h3>
-      <p>Поздравляем <strong>${name}</strong> с днем рождения! Желаем здоровья, счастья и успехов!</p>
+      <p>Поздравляем вас <strong>${name}</strong> с днем рождения! Желаем здоровья, счастья и успехов!</p>
     </div>
     <button class="birthday-banner-close" aria-label="Закрыть">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -151,7 +151,7 @@ function createContinuousConfetti() {
 }
 
 // Функция для тестирования баннера (вызывается из консоли)
-window.testBirthdayBanner = (name = 'Администратор') => {
+window.testBirthdayBanner = (name = 'Якимовец Александр Петрович') => {
 	// Очищаем localStorage, чтобы баннер показался снова
 	localStorage.removeItem('birthdayBannerShown')
 	showBirthdayBanner(name)
