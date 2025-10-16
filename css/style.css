@@ -123,6 +123,14 @@ p {
   justify-content: center;
 }
 
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Header */
 .header {
   position: sticky;
@@ -351,19 +359,18 @@ p {
   /* Предотвращаю скролл на overlay */
   overscroll-behavior: contain;
   touch-action: none;
-  
+
   /* Размытие всего сайта, кроме мобильного меню */
-body.mobile-menu-open .header,
-body.mobile-menu-open main,
-body.mobile-menu-open footer {
-  filter: blur(6px);
-  transition: filter 0.3s ease;
-}
+  body.mobile-menu-open .header,
+  body.mobile-menu-open main,
+  body.mobile-menu-open footer {
+    filter: blur(6px);
+    transition: filter 0.3s ease;
+  }
 
-body.mobile-menu-open .mobile-menu-sidebar {
-  filter: none !important;
-}
-
+  body.mobile-menu-open .mobile-menu-sidebar {
+    filter: none !important;
+  }
 }
 
 .mobile-menu-overlay.active {
@@ -2590,20 +2597,20 @@ html.mobile-menu-open {
 
 /* Контейнер медиа */
 .article-media {
-  display: block;          /* показываем контейнер */
-  width: 100%;             /* занимает всю ширину родителя */
-  max-width: 100%;         /* не вылезает за пределы */
-  margin: 1rem 0;          /* отступы сверху и снизу */
+  display: block; /* показываем контейнер */
+  width: 100%; /* занимает всю ширину родителя */
+  max-width: 100%; /* не вылезает за пределы */
+  margin: 1rem 0; /* отступы сверху и снизу */
 }
 
 /* Изображения внутри контейнера */
 .article-media img {
-  width: 100%;             /* растягиваем под ширину контейнера */
-  max-width: 100%;         /* не выходит за пределы */
-  height: auto;            /* сохраняем пропорции */
-  display: block;          /* убираем лишние отступы */
-  border-radius: 6px;      /* скругление по желанию */
-  object-fit: cover;       /* красиво подстраивает изображение */
+  width: 100%; /* растягиваем под ширину контейнера */
+  max-width: 100%; /* не выходит за пределы */
+  height: auto; /* сохраняем пропорции */
+  display: block; /* убираем лишние отступы */
+  border-radius: 6px; /* скругление по желанию */
+  object-fit: cover; /* красиво подстраивает изображение */
 }
 
 /* Видео внутри контейнера */
@@ -2635,5 +2642,87 @@ html.mobile-menu-open {
   margin: 10px 0;
 }
 
+/* Добавляю стили для красивой карточки документа */
+.document-highlight {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, var(--bg-accent) 0%, var(--bg-primary) 100%);
+}
 
+.document-card-featured {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: var(--bg-primary);
+  padding: 3rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--primary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.document-card-featured:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.document-card-icon {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.document-card-icon svg {
+  width: 60px;
+  height: 60px;
+  color: var(--primary-color);
+  stroke-width: 2;
+}
+
+.document-card-content {
+  flex: 1;
+}
+
+.document-card-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.document-card-content p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .document-card-featured {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .document-card-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .document-card-icon svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .document-card-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .document-card-content p {
+    font-size: 1rem;
+  }
+}
