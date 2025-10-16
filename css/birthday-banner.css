@@ -1,0 +1,435 @@
+/* Стили для компонента поздравления с днем рождения */
+
+/* Улучшенный баннер с градиентом и стеклянным эффектом */
+.birthday-banner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  max-width: 750px; /* Увеличил максимальную ширину */
+  min-width: 550px; /* Увеличил минимальную ширину */
+  background: linear-gradient(135deg, 
+    rgba(22, 163, 74, 0.95) 0%, 
+    rgba(34, 197, 94, 0.95) 50%, 
+    rgba(21, 128, 61, 0.95) 100%);
+  color: white;
+  z-index: 10000;
+  padding: 4rem 3.5rem 3.5rem 3.5rem; /* Увеличил верхний отступ для крестика */
+  box-shadow: 
+    0 25px 80px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(22, 163, 74, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Блюр фона для всего контента кроме баннера */
+.birthday-banner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 9998;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Декоративные элементы */
+.birthday-banner::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
+  background-size: 50px 50px;
+  animation: sparkle 20s linear infinite;
+  pointer-events: none;
+}
+
+.birthday-banner::after {
+  content: "🎉";
+  position: absolute;
+  top: 25px; /* Подвинул ниже */
+  right: 30px; /* Подвинул дальше от края */
+  font-size: 2.5rem;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+@keyframes sparkle {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-50px) rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.8) rotateY(10deg);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1) rotateY(0);
+    opacity: 1;
+  }
+}
+
+.birthday-banner.closing {
+  animation: scaleOut 0.4s ease-in forwards;
+}
+
+@keyframes scaleOut {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Контент баннера */
+.birthday-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Улучшенная иконка */
+/* Улучшенная иконка - красивый торт */
+.birthday-banner-icon {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Анимация свечей */
+.birthday-banner-icon::before,
+.birthday-banner-icon::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 3px;
+  height: 18px;
+  background: linear-gradient(to bottom, #ff6b6b, #ff8787, #ffd93d);
+  border-radius: 2px;
+  animation: candleFlicker 2s ease-in-out infinite;
+}
+
+.birthday-banner-icon::before {
+  left: 35%;
+  animation-delay: 0s;
+}
+
+.birthday-banner-icon::after {
+  right: 35%;
+  animation-delay: 0.5s;
+}
+
+/* Огоньки свечей */
+.birthday-banner-icon .flame {
+  position: absolute;
+  width: 6px;
+  height: 8px;
+  background: radial-gradient(circle, #ffd93d 30%, #ff6b6b 70%);
+  border-radius: 50% 50% 20% 20%;
+  animation: flameFlicker 1.5s ease-in-out infinite;
+  filter: blur(0.5px);
+}
+
+.birthday-banner-icon .flame:nth-child(1) {
+  top: -12px;
+  left: 34%;
+  animation-delay: 0s;
+}
+
+.birthday-banner-icon .flame:nth-child(2) {
+  top: -12px;
+  right: 34%;
+  animation-delay: 0.3s;
+}
+
+@keyframes candleFlicker {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  25% { 
+    transform: translateY(-1px) rotate(1deg);
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(1px) rotate(-1deg);
+    opacity: 0.8;
+  }
+  75% { 
+    transform: translateY(-1px) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flameFlicker {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+
+.birthday-banner-icon svg {
+  width: 60px; /* Увеличил иконку */
+  height: 60px;
+  stroke: white;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+/* Улучшенная типографика */
+.birthday-banner-text {
+  flex: 1;
+  padding-right: 20px; /* Добавил отступ справа для текста */
+}
+
+.birthday-banner-text h3 {
+  margin: 0 0 1rem 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  max-width: 90%; /* Ограничил ширину заголовка */
+}
+
+.birthday-banner-text p {
+  margin: 0;
+  font-size: 1.3rem;
+  opacity: 0.95;
+  line-height: 1.7;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  max-width: 95%; /* Ограничил ширину текста */
+}
+
+.birthday-banner-text strong {
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Улучшенная кнопка закрытия - подвинул выше и дальше */
+.birthday-banner-close {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  width: 55px; /* Немного уменьшил размер */
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 25px; /* Подвинул ниже от верхнего края */
+  right: 25px; /* Подвинул дальше от правого края */
+  z-index: 3; /* Увеличил z-index чтобы был поверх всего */
+}
+
+.birthday-banner-close:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 100%);
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.birthday-banner-close:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+.birthday-banner-close svg {
+  width: 26px; /* Немного уменьшил иконку */
+  height: 26px;
+  stroke: white;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+}
+
+/* Улучшенные конфети */
+.birthday-banner-confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1;
+}
+
+.confetti-piece {
+  position: absolute;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: fall 4s linear forwards;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-30px) translateX(0) rotate(0deg) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(700px) translateX(calc((var(--x-end, 100)) * 1px)) rotate(calc(var(--rotation, 360) * 1deg)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .birthday-banner {
+    padding: 3rem 2.5rem 2.5rem 2.5rem;
+    max-width: 90%;
+    min-width: unset;
+  }
+
+  .birthday-banner-content {
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .birthday-banner-text {
+    padding-right: 0; /* Убрал отступ на мобильных */
+  }
+
+  .birthday-banner-text h3 {
+    font-size: 2rem;
+    max-width: 100%;
+  }
+
+  .birthday-banner-text p {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
+
+  .birthday-banner-icon {
+    width: 85px;
+    height: 85px;
+  }
+
+  .birthday-banner-icon svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .birthday-banner-close {
+    width: 50px;
+    height: 50px;
+    top: 20px;
+    right: 20px;
+  }
+
+  .birthday-banner-close svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .birthday-banner::after {
+    top: 20px;
+    right: 25px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .birthday-banner {
+    padding: 2.5rem 2rem 2rem 2rem;
+    max-width: 95%;
+  }
+
+  .birthday-banner-content {
+    gap: 1.5rem;
+  }
+
+  .birthday-banner-icon {
+    width: 75px;
+    height: 75px;
+  }
+
+  .birthday-banner-text h3 {
+    font-size: 1.8rem;
+  }
+
+  .birthday-banner-text p {
+    font-size: 1rem;
+  }
+
+  .birthday-banner-close {
+    width: 45px;
+    height: 45px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .birthday-banner-close svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .birthday-banner::after {
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+  }
+}
