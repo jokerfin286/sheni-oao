@@ -22,7 +22,7 @@
 .contact-form input:valid,
 .contact-form textarea:valid,
 .contact-form select:valid {
-  border-color: #10b981;
+  border-color: #787c88;
 }
 
 /* Стили для уведомлений */

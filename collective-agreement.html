@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Коллективный договор 2023–2025 — Шени-агропродукт</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <style>
+    body {
+      background: var(--bg-secondary);
+      user-select: none;
+      -webkit-user-select: none;
+      overflow-x: hidden;
+    }
+
+    .doc-viewer {
+      max-width: 1000px;
+      margin: 3rem auto;
+      background: var(--bg-primary);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .doc-viewer h1 {
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
+
+    .doc-images {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .doc-images img {
+      width: 100%;
+      max-width: 900px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      pointer-events: none;
+    }
+
+    :root[data-theme="dark"] .doc-viewer {
+      background: var(--primary-dark);
+      color: #f9fafb;
+    }
+  </style>
+
+  <script>
+    // 🚫 блокируем всё лишнее
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.key === 'F12' || (e.ctrlKey && ['s','u','c','a','p','x'].includes(e.key.toLowerCase())))
+        e.preventDefault();
+    });
+  </script>
+</head>
+
+<body>
+  <div class="doc-viewer">
+    <h1>Коллективный договор ОАО «Шени-агропродукт»<br>на 2023–2025 годы</h1>
+    <div class="doc-images">
+      <img src="documents/collective-agreement/page1.jpg" alt="">
+      <img src="documents/collective-agreement/page2.jpg" alt="">
+      <img src="documents/collective-agreement/page3.jpg" alt="">
+      <!-- добавь остальные страницы -->
+    </div>
+  </div>
+</body>
+</html>
