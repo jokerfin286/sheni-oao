@@ -1,8 +1,8 @@
 /* CSS Variables */
 :root {
-  --primary-color: #16a34a;
-  --primary-dark: #15803d;
-  --primary-light: #22c55e;
+  --primary-color: #474a51;
+  --primary-dark: #303338;
+  --primary-light: #787c88;
   --secondary-color: #f59e0b;
   --text-primary: #111827;
   --text-secondary: #6b7280;
@@ -2725,4 +2725,295 @@ html.mobile-menu-open {
   .document-card-content p {
     font-size: 1rem;
   }
+}
+
+/* Added typewriter animation styles */
+.typewriter-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 3.5rem;
+}
+
+.typewriter-text {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.typewriter-cursor {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  animation: blink 1s infinite;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Redesigned Organizational Life Section - minimalist photo grid */
+.organizational-life,
+.social-life {
+  padding: 5rem 0;
+}
+
+.organizational-life {
+  background-color: var(--bg-primary);
+}
+
+.social-life {
+  background-color: var(--bg-secondary);
+}
+
+.life-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  margin-top: 3rem;
+}
+
+.life-block {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.life-image {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.life-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(33, 150, 243, 0.1));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.life-image:hover::before {
+  opacity: 1;
+}
+
+.life-image:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.life-image img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.life-image:hover img {
+  transform: scale(1.08);
+}
+
+.life-text {
+  padding: 1rem 0;
+}
+
+.life-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.life-text h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1.25rem 0;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.life-text p {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Reverse layout for alternating blocks */
+.life-block-reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.life-block-reverse .life-image {
+  order: 2;
+}
+
+.life-block-reverse .life-text {
+  order: 1;
+}
+
+/* Dark theme support */
+:root[data-theme="dark"] .life-image {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme="dark"] .life-image:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive design for tablets */
+@media (max-width: 1024px) {
+  .life-block,
+  .life-block-reverse {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .life-text h3 {
+    font-size: 1.5rem;
+  }
+
+  .life-text p {
+    font-size: 1rem;
+  }
+
+  .life-icon {
+    font-size: 2.5rem;
+  }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .organizational-life,
+  .social-life {
+    padding: 3rem 0;
+  }
+
+  .life-grid {
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .life-block,
+  .life-block-reverse {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .life-block-reverse .life-image {
+    order: 1;
+  }
+
+  .life-block-reverse .life-text {
+    order: 2;
+  }
+
+  .life-text {
+    padding: 0;
+  }
+
+  .life-text h3 {
+    font-size: 1.375rem;
+  }
+
+  .life-text p {
+    font-size: 0.9375rem;
+  }
+
+  .life-icon {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .life-image {
+    border-radius: 12px;
+  }
+
+  .typewriter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 4rem;
+  }
+
+  .typewriter-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .organizational-life,
+  .social-life {
+    padding: 2.5rem 0;
+  }
+
+  .life-grid {
+    gap: 2.5rem;
+  }
+
+  .life-text h3 {
+    font-size: 1.25rem;
+  }
+
+  .life-icon {
+    font-size: 2rem;
+  }
+
+  .typewriter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 4rem;
+  }
+
+  .typewriter-text {
+    font-size: 1rem;
+  }
+
+  .org-photo-overlay {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .social-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* Dark theme support for new sections */
+:root[data-theme="dark"] .life-image,
+:root[data-theme="dark"] .social-item {
+  background-color: #0e1627;
+  border-color: var(--border-color);
+}
+
+:root[data-theme="dark"] .gallery-caption {
+  background-color: #0e1627;
 }
