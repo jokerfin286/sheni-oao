@@ -2130,7 +2130,7 @@ p {
 
 .contact-phone {
   font-family: "Courier New", monospace;
-  color: var(--primary-color);
+  color: var(rgb(255, 255, 255));
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
